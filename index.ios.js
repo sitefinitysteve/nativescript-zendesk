@@ -24,7 +24,7 @@ exports.openHelpCenter = function (style){
             //SUCCESS 
             function(){
                 try{ 
-					if(isAnon){
+					if(isAnonymous){
 						loadAnonUser();
 					}
 					
