@@ -22,6 +22,7 @@ exports.openHelpCenter = function (style){
 		    var activity = frameModule.topmost().android.activity;
     
     debugger;
+    
     var callback = new com.zendesk.service.ZendeskCallback({
                         onSuccess: function(args){
                             console.log("SUCCESS");
@@ -33,6 +34,7 @@ exports.openHelpCenter = function (style){
                         }
                     });
     debugger;
+    
     com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.init(activity, 
                                                             account.appId,  
                                                             account.url, 
