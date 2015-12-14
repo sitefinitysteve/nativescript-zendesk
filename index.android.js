@@ -24,23 +24,21 @@ exports.openHelpCenter = function (style){
     
         var MyZendeskCallback = com.zendesk.service.ZendeskCallback.extend({
             onSuccess: function(args){
-                console.log("SUCCESS");
-                debugger;
-                if(isAnonymous){
-                    loadAnonUser();
-                }
-                
+                try{ 
+                    if(isAnonymous){
+                        loadAnonUser();
+                    }
 
-                
-                // 1) Sets the configuration used by the Contact Zendesk component
-                //com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setContactConfiguration(new SampleFeedbackConfiguration());
-        
-                // 2) Starts the Help Center component
-                new com.zendesk.sdk.support.SupportActivity.Builder().listCategories().show(activity);
+                    // 1) Sets the configuration used by the Contact Zendesk component
+                    //com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setContactConfiguration(new SampleFeedbackConfiguration());
+            
+                    new com.zendesk.sdk.support.SupportActivity.Builder().listCategories().show(activity);
+                } catch(args){
+                    console.log(args);
+                }
             },
             onError: function(error){
-                console.log("FAILED");
-                debugger;
+                console.log(error);
             }
         });
         
@@ -61,7 +59,7 @@ exports.openHelpCenter = function (style){
 }
 
 exports.setLocale = function(locale) {
-
+    //No supported yet
 }
 
 // #####################################################

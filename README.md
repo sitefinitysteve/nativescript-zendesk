@@ -5,8 +5,6 @@
 - https://<domain>.zendesk.com/agent/admin/mobile_sdk
 - Note your appid, url, and clientid for later
 
-## iOS
-
 Add the plugin
 ```
 var zendesk = require("nativescript-zendesk");
@@ -20,9 +18,6 @@ Open the Help Center
 ```
 zendesk.openHelpCenter();
 ```
-
-## Android
-NOT FUNCTIONAL YET
 
 ## Options
 Set locale
