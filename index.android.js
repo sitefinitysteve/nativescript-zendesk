@@ -59,7 +59,7 @@ exports.openHelpCenter = function (style){
 }
 
 exports.setLocale = function(locale) {
-    //No supported yet
+    com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setDeviceLocale(locale); 
 }
 
 // #####################################################
@@ -68,8 +68,4 @@ exports.setLocale = function(locale) {
 function loadAnonUser(){
     var anonymousIdentity = new com.zendesk.sdk.model.access.AnonymousIdentity.Builder().build();
     com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setIdentity(anonymousIdentity);
-}
-
-function getColor(color){
-	return new colorModule.Color(color).android;
 }

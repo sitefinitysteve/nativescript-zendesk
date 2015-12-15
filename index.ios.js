@@ -1,5 +1,5 @@
 var frameModule = require("ui/frame");
-
+var colorModule = require("color");
 var isAnonymous = true;
 var isInitalized = false;
 
