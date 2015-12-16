@@ -42,29 +42,44 @@ var color = "#666666";
 var app = require("application");
 
 if(app.ios){
-	zendesk.themeViewBackgroundColor(color);
-	zendesk.themeTableBackgroundColor(color);
-	zendesk.themeSeparatorColor(color);
-	zendesk.themeNoResultsFoundLabelColor(color);
-	zendesk.themeNoResultsFoundLabelBackground(color);
-	zendesk.themeNoResultsContactButtonBackground(color);
-	zendesk.themeNoResultsContactButtonTitleColorNormal(color);
-	zendesk.themeNoResultsContactButtonTitleColorHighlighted(color);
-	zendesk.themeNoResultsContactButtonTitleColorDisabled(color);
-	zendesk.themeNoResultsContactButtonBorderColor(color);
-	zendesk.themeSearchBackgroundColor(color);
-	zendesk.themeSearchTitleLabelBackground(color);
-	zendesk.themeSearchTitleLabelColor(color);
-	zendesk.themeArticleViewBackgroundColor(color);
-	zendesk.themeArticleParentsLabelColor(color);
-	zendesk.themeArticleParnetsLabelBackground(color);
-	zendesk.themeArticleTitleLabelColor(color);
-	zendesk.themeArticleLabelBackground(color);
-	zendesk.themeAttachmentBackgroundColor(color);
-	zendesk.themeAttachmentTitleLabelBackground(color);
-	zendesk.themeAttachmentTitleLabelColor(color);
-	zendesk.themeAttachmentFileSizeLabelBackground(color);
-	zendesk.themeAttachmentFileSizeLabelColor(color);
+	//Create the theme
+	//All of these propertoes are optional...
+	var myTheme = {
+			ZDKSupportView: {
+				viewBackgroundColor: "#E0E0E0",
+				tableBackgroundColor: "#E0E0E0",
+				separatorColor: "#E0E0E0",
+				noResultsFoundLabelColor: "#E0E0E0",
+				noResultsFoundLabelBackground: ""#E0E0E0,
+				noResultsContactButtonBackground: "#E0E0E0",
+				noResultsContactButtonTitleColorNormal: "#E0E0E0",
+				noResultsContactButtonTitleColorHighlighted: "#E0E0E0",
+				noResultsContactButtonTitleColorDisabled: "#E0E0E0",
+				noResultsContactButtonBorderColor: "#E0E0E0"
+			},
+			ZDKSupportTableViewCell: {
+				viewBackgroundColor: "#E0E0E0",
+				titleLabelBackground: "#E0E0E0",
+				titleLabelColor: "#E0E0E0"
+			},
+			ZDKSupportArticleTableViewCell: {
+				viewBackgroundColor: "#E0E0E0",
+				parentsLabelColor: "#E0E0E0",
+				parnetsLabelBackground: "#E0E0E0",
+				titleLabelColor: "#E0E0E0",
+				labelBackground: "#E0E0E0"
+			},
+			ZDKSupportAttachmentCell: {
+				backgroundColor: "#E0E0E0",
+				titleLabelBackground: "#E0E0E0",
+				titleLabelColor: "#E0E0E0",
+				fileSizeLabelBackground: "#E0E0E0",
+				fileSizeLabelColor: "#E0E0E0"
+			}
+		};
+		
+	//Load the theme
+	zendesk.theme(myTheme);
 }
 ```
 
