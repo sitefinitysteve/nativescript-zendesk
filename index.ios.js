@@ -58,97 +58,90 @@ exports.setLocale = function(locale) {
 // #####################################################
 // ## THEME ZONE, WHERE THE THEME GOES TO PARTY
 // #####################################################
-exports.themeViewBackgroundColor = function(color){
-	ZDKSupportView.appearance().viewBackgroundColor = getColor(color);
-}
-
-exports.themeTableBackgroundColor = function(color){
-	ZDKSupportView.appearance().tableBackgroundColor = getColor(color);
-}
-
-exports.themeSeparatorColor = function(color){
-	ZDKSupportView.appearance().separatorColor = getColor(color);
-}
-
-exports.themeNoResultsFoundLabelColor = function(color){
-	ZDKSupportView.appearance().noResultsFoundLabelColor = getColor(color);
-}
-
-exports.themeNoResultsFoundLabelBackground = function(color){
-	ZDKSupportView.appearance().noResultsFoundLabelBackground = getColor(color);
-}
-
-exports.themeNoResultsContactButtonBackground = function(color){
-	ZDKSupportView.appearance().noResultsContactButtonBackground = getColor(color);
-}
-
-exports.themeNoResultsContactButtonTitleColorNormal = function(color){
-	ZDKSupportView.appearance().noResultsContactButtonTitleColorNormal = getColor(color);
-}
-
-exports.themeNoResultsContactButtonTitleColorHighlighted = function(color){
-	ZDKSupportView.appearance().noResultsContactButtonTitleColorHighlighted = getColor(color);
-}
-
-exports.themeNoResultsContactButtonTitleColorDisabled = function(color){
-	ZDKSupportView.appearance().noResultsContactButtonTitleColorDisabled = getColor(color);
-}
-
-exports.themeNoResultsContactButtonBorderColor = function(color){
-	ZDKSupportView.appearance().noResultsContactButtonBorderColor = getColor(color);
-}
-
-exports.themeSearchBackgroundColor = function(color){
-	ZDKSupportTableViewCell.appearance().viewBackgroundColor = getColor(color);
-}
-
-exports.themeSearchTitleLabelBackground = function(color){
-	ZDKSupportTableViewCell.appearance().titleLabelBackground = getColor(color);
-}
-
-exports.themeSearchTitleLabelColor = function(color){
-	ZDKSupportTableViewCell.appearance().titleLabelColor = getColor(color);
-}
-
-exports.themeArticleViewBackgroundColor = function(color){
-	ZDKSupportArticleTableViewCell.appearance().viewBackgroundColor = getColor(color);
-}
-
-exports.themeArticleParentsLabelColor = function(color){
-	ZDKSupportArticleTableViewCell.appearance().parentsLabelColor = getColor(color);
-}
-
-// Typo in the zen api, or docs?
-exports.themeArticleParnetsLabelBackground = function(color){
-	ZDKSupportArticleTableViewCell.appearance().parnetsLabelBackground = getColor(color);
-}
-
-exports.themeArticleTitleLabelColor = function(color){
-	ZDKSupportArticleTableViewCell.appearance().titleLabelColor = getColor(color);
-}
-
-exports.themeArticleLabelBackground = function(color){
-	ZDKSupportArticleTableViewCell.appearance().labelBackground = getColor(color);
-}
-
-exports.themeAttachmentBackgroundColor = function(color){
-	ZDKSupportAttachmentCell.appearance().backgroundColor = getColor(color);
-}
-
-exports.themeAttachmentTitleLabelBackground = function(color){
-	ZDKSupportAttachmentCell.appearance().titleLabelBackground = getColor(color);
-}
-
-exports.themeAttachmentTitleLabelColor = function(color){
-	ZDKSupportAttachmentCell.appearance().titleLabelColor = getColor(color);
-}
-
-exports.themeAttachmentFileSizeLabelBackground = function(color){
-	ZDKSupportAttachmentCell.appearance().fileSizeLabelBackground = getColor(color);
-}
-
-exports.themeAttachmentFileSizeLabelColor = function(color){
-	ZDKSupportAttachmentCell.appearance().fileSizeLabelColor = getColor(color);
+exports.theme = function(args){
+	debugger;
+	if(args != null && args != "undefined"){
+		if(args.ZDKSupportView){
+			if(args.ZDKSupportView.viewBackgroundColor){
+				ZDKSupportView.appearance().viewBackgroundColor = getColor(args.ZDKSupportView.viewBackgroundColor);	
+			}
+			if(args.ZDKSupportView.tableBackgroundColor){
+				ZDKSupportView.appearance().tableBackgroundColor = getColor(args.ZDKSupportView.tableBackgroundColor);	
+			}
+			if(args.ZDKSupportView.separatorColor){
+				ZDKSupportView.appearance().separatorColor = getColor(args.ZDKSupportView.separatorColor);	
+			}
+			if(args.ZDKSupportView.noResultsFoundLabelColor){
+				ZDKSupportView.appearance().noResultsFoundLabelColor = getColor(args.ZDKSupportView.noResultsFoundLabelColor);	
+			}
+			if(args.ZDKSupportView.noResultsFoundLabelBackground){
+				ZDKSupportView.appearance().noResultsFoundLabelBackground = getColor(args.ZDKSupportView.noResultsFoundLabelBackground);	
+			}
+			if(args.ZDKSupportView.noResultsContactButtonBackground){
+				ZDKSupportView.appearance().noResultsContactButtonBackground = getColor(args.ZDKSupportView.noResultsContactButtonBackground);	
+			}
+			if(args.ZDKSupportView.noResultsContactButtonTitleColorNormal){
+				ZDKSupportView.appearance().noResultsContactButtonTitleColorNormal = getColor(args.ZDKSupportView.noResultsContactButtonTitleColorNormal);	
+			}
+			if(args.ZDKSupportView.noResultsContactButtonTitleColorHighlighted){
+				ZDKSupportView.appearance().noResultsContactButtonTitleColorHighlighted = getColor(args.ZDKSupportView.noResultsContactButtonTitleColorHighlighted);	
+			}
+			if(args.ZDKSupportView.noResultsContactButtonTitleColorDisabled){
+				ZDKSupportView.appearance().noResultsContactButtonTitleColorDisabled = getColor(args.ZDKSupportView.noResultsContactButtonTitleColorDisabled);	
+			}
+			if(args.ZDKSupportView.noResultsContactButtonBorderColor){
+				ZDKSupportView.appearance().noResultsContactButtonBorderColor = getColor(args.ZDKSupportView.noResultsContactButtonBorderColor);	
+			}
+		}
+		
+		if(args.ZDKSupportTableViewCell){
+			if(args.ZDKSupportTableViewCell.viewBackgroundColor){
+				ZDKSupportTableViewCell.appearance().viewBackgroundColor = getColor(args.ZDKSupportTableViewCell.viewBackgroundColor);	
+			}
+			if(args.ZDKSupportTableViewCell.titleLabelBackground){
+				ZDKSupportTableViewCell.appearance().titleLabelBackground = getColor(args.ZDKSupportTableViewCell.titleLabelBackground);	
+			}
+			if(args.ZDKSupportTableViewCell.titleLabelColor){
+				ZDKSupportTableViewCell.appearance().titleLabelColor = getColor(args.ZDKSupportTableViewCell.titleLabelColor);	
+			}
+		}
+		
+		if(args.ZDKSupportArticleTableViewCell){
+			if(args.ZDKSupportArticleTableViewCell.viewBackgroundColor){
+				ZDKSupportArticleTableViewCell.appearance().viewBackgroundColor = getColor(args.ZDKSupportArticleTableViewCell.viewBackgroundColor);	
+			}
+			if(args.ZDKSupportArticleTableViewCell.parentsLabelColor){
+				ZDKSupportArticleTableViewCell.appearance().parentsLabelColor = getColor(args.ZDKSupportArticleTableViewCell.parentsLabelColor);	
+			}
+			if(args.ZDKSupportArticleTableViewCell.parnetsLabelBackground){
+				ZDKSupportArticleTableViewCell.appearance().parnetsLabelBackground = getColor(args.ZDKSupportArticleTableViewCell.parnetsLabelBackground);	
+			}
+			if(args.ZDKSupportArticleTableViewCell.titleLabelColor){
+				ZDKSupportArticleTableViewCell.appearance().titleLabelColor = getColor(args.ZDKSupportArticleTableViewCell.titleLabelColor);	
+			}
+			if(args.ZDKSupportArticleTableViewCell.labelBackground){
+				ZDKSupportArticleTableViewCell.appearance().labelBackground = getColor(args.ZDKSupportArticleTableViewCell.labelBackground);	
+			}
+		}
+		
+		if(args.ZDKSupportAttachmentCell){
+			if(args.ZDKSupportAttachmentCell.backgroundColor){
+				ZDKSupportAttachmentCell.appearance().backgroundColor = getColor(args.ZDKSupportAttachmentCell.backgroundColor);	
+			}
+			if(args.ZDKSupportAttachmentCell.titleLabelBackground){
+				ZDKSupportAttachmentCell.appearance().titleLabelBackground = getColor(args.ZDKSupportAttachmentCell.titleLabelBackground);	
+			}
+			if(args.ZDKSupportAttachmentCell.titleLabelColor){
+				ZDKSupportAttachmentCell.appearance().titleLabelColor = getColor(args.ZDKSupportAttachmentCell.titleLabelColor);	
+			}
+			if(args.ZDKSupportAttachmentCell.fileSizeLabelBackground){
+				ZDKSupportAttachmentCell.appearance().fileSizeLabelBackground = getColor(args.ZDKSupportAttachmentCell.fileSizeLabelBackground);	
+			}
+			if(args.ZDKSupportAttachmentCell.fileSizeLabelColor){
+				ZDKSupportAttachmentCell.appearance().fileSizeLabelColor = getColor(args.ZDKSupportAttachmentCell.fileSizeLabelColor);	
+			}
+		}
+	}
 }
 
 // #####################################################
