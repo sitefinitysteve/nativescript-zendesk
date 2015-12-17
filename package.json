@@ -1,6 +1,6 @@
 {
   "name": "nativescript-zendesk",
-  "version": "v0.1.1",
+  "version": "v0.1.2",
   "description": "A NativeScript module for integrating Zendesk",
   "main": "index.js",
   "nativescript": {
@@ -14,8 +14,13 @@
     "Zendesk",
     "HelpCenter",
     "Tickets",
-    "sitefinitysteve"
+    "sitefinitysteve",
+    "iOS",
+    "Android"
   ],
   "author": "Steve McNiven-Scott <steve@sitefinitysteve.com> (https://github.com/sitefinitysteve)",
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "license": "Apache-2.0",
+  "bugs": "https://github.com/sitefinitysteve/nativescript-zendesk/issues",
+  "homepage": "https://github.com/sitefinitysteve/nativescript-zendesk"
 }
