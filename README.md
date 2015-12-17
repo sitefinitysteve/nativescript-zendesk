@@ -11,7 +11,8 @@ var zendesk = require("nativescript-zendesk");
 ```
 Initalize the plugin
 ```
-zendesk.init(<appid>,<url>,<clientid>, true);
+var isAnon = true; //Only true supported atm
+zendesk.init(<appid>,<url>,<clientid>, isAnon);
 ```
 
 Open the Help Center
