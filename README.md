@@ -2,7 +2,7 @@
 
 ## Setup
 - Create your Mobile SDK account in zendesk
-- https://<domain>.zendesk.com/agent/admin/mobile_sdk
+- https://domain.zendesk.com/agent/admin/mobile_sdk
 - Note your appid, url, and clientid for later
 
 Add the plugin
