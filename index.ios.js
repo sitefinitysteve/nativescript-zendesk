@@ -180,7 +180,7 @@ exports.theme = function(args){
 				ZDKSupportAttachmentCell.appearance().titleLabelFont = args.ZDKSupportAttachmentCell.titleLabelFont;	
 			}
 			if(args.ZDKSupportAttachmentCell.fileSizeLabelFont){
-				ZDKSupportAttachmentCell.appearance().fileSizeLabelFont = getColor(args.ZDKSupportAttachmentCell.fileSizeLabelFont);	
+				ZDKSupportAttachmentCell.appearance().fileSizeLabelFont = args.ZDKSupportAttachmentCell.fileSizeLabelFont;	
 			}
 		}
 	}
