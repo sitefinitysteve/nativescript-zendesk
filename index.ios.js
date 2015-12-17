@@ -58,7 +58,7 @@ exports.setLocale = function(locale) {
 // #####################################################
 // ## THEME ZONE, WHERE THE THEME GOES TO PARTY
 // #####################################################
-exports.theme = function(args){
+exports.setTheme = function(args){
 	if(args != null && args != "undefined"){
 		if(args.ZDKSupportView){
 			if(args.ZDKSupportView.viewBackgroundColor){

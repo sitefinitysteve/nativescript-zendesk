@@ -62,6 +62,10 @@ exports.setLocale = function(locale) {
     com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setDeviceLocale(locale); 
 }
 
+exports.setTheme = function(args){
+    console.log("nativescript-zendesk setTheme Not available on Android, use the readme to see how to theme via the manifest")
+}
+
 // #####################################################
 // ## METHODS
 // #####################################################
