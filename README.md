@@ -28,8 +28,6 @@ zendesk.setLocale("fr_CA");
 ### iOS Theme
 [Docs](https://developer.zendesk.com/embeddables/docs/ios/customization)
 ```
-var color = "#666666";
-
 var app = require("application");
 
 if(app.ios){
