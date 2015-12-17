@@ -25,15 +25,6 @@ Set locale
 zendesk.setLocale("fr_CA");
 ```
 
-## Styling iOS
-```
-//Example
-zendesk.themeSeparatorColor("#666666");
-
-//Now open your helpcenter
-zendesk.openHelpCenter();     
-```
-
 ### iOS Theme
 [Docs](https://developer.zendesk.com/embeddables/docs/ios/customization)
 ```
