@@ -59,7 +59,6 @@ exports.setLocale = function(locale) {
 // ## THEME ZONE, WHERE THE THEME GOES TO PARTY
 // #####################################################
 exports.theme = function(args){
-	debugger;
 	if(args != null && args != "undefined"){
 		if(args.ZDKSupportView){
 			if(args.ZDKSupportView.viewBackgroundColor){
@@ -71,26 +70,47 @@ exports.theme = function(args){
 			if(args.ZDKSupportView.separatorColor){
 				ZDKSupportView.appearance().separatorColor = getColor(args.ZDKSupportView.separatorColor);	
 			}
-			if(args.ZDKSupportView.noResultsFoundLabelColor){
-				ZDKSupportView.appearance().noResultsFoundLabelColor = getColor(args.ZDKSupportView.noResultsFoundLabelColor);	
+			
+			//SearchBar
+			if(args.ZDKSupportView.searchBarStyle){
+				ZDKSupportView.appearance().searchBarStyle = args.ZDKSupportView.searchBarStyle;	
 			}
-			if(args.ZDKSupportView.noResultsFoundLabelBackground){
-				ZDKSupportView.appearance().noResultsFoundLabelBackground = getColor(args.ZDKSupportView.noResultsFoundLabelBackground);	
-			}
-			if(args.ZDKSupportView.noResultsContactButtonBackground){
-				ZDKSupportView.appearance().noResultsContactButtonBackground = getColor(args.ZDKSupportView.noResultsContactButtonBackground);	
-			}
-			if(args.ZDKSupportView.noResultsContactButtonTitleColorNormal){
-				ZDKSupportView.appearance().noResultsContactButtonTitleColorNormal = getColor(args.ZDKSupportView.noResultsContactButtonTitleColorNormal);	
-			}
-			if(args.ZDKSupportView.noResultsContactButtonTitleColorHighlighted){
-				ZDKSupportView.appearance().noResultsContactButtonTitleColorHighlighted = getColor(args.ZDKSupportView.noResultsContactButtonTitleColorHighlighted);	
-			}
-			if(args.ZDKSupportView.noResultsContactButtonTitleColorDisabled){
-				ZDKSupportView.appearance().noResultsContactButtonTitleColorDisabled = getColor(args.ZDKSupportView.noResultsContactButtonTitleColorDisabled);	
-			}
-			if(args.ZDKSupportView.noResultsContactButtonBorderColor){
-				ZDKSupportView.appearance().noResultsContactButtonBorderColor = getColor(args.ZDKSupportView.noResultsContactButtonBorderColor);	
+			
+			if(args.ZDKSupportView.noResults){
+				if(args.ZDKSupportView.noResults.foundLabelColor){
+					ZDKSupportView.appearance().noResultsFoundLabelColor = getColor(args.ZDKSupportView.noResults.foundLabelColor);	
+				}
+				if(args.ZDKSupportView.noResults.foundLabelBackground){
+					ZDKSupportView.appearance().noResultsFoundLabelBackground = getColor(args.ZDKSupportView.noResults.foundLabelBackground);	
+				}
+				if(args.ZDKSupportView.noResults.contactButtonBackground){
+					ZDKSupportView.appearance().noResultsContactButtonBackground = getColor(args.ZDKSupportView.noResults.contactButtonBackground);	
+				}
+				if(args.ZDKSupportView.noResults.contactButtonTitleColorNormal){
+					ZDKSupportView.appearance().noResultsContactButtonTitleColorNormal = getColor(args.ZDKSupportView.noResults.contactButtonTitleColorNormal);	
+				}
+				if(args.ZDKSupportView.noResults.contactButtonTitleColorHighlighted){
+					ZDKSupportView.appearance().noResultsContactButtonTitleColorHighlighted = getColor(args.ZDKSupportView.noResults.contactButtonTitleColorHighlighted);	
+				}
+				if(args.ZDKSupportView.noResults.contactButtonTitleColorDisabled){
+					ZDKSupportView.appearance().noResultsContactButtonTitleColorDisabled = getColor(args.ZDKSupportView.noResults.contactButtonTitleColorDisabled);	
+				}
+				if(args.ZDKSupportView.noResults.contactButtonBorderColor){
+					ZDKSupportView.appearance().noResultsContactButtonBorderColor = getColor(args.ZDKSupportView.noResults.contactButtonBorderColor);	
+				}	
+				
+				if(args.ZDKSupportView.noResults.contactButtonBorderWidth){
+					ZDKSupportView.appearance().setNoResultsContactButtonBorderWidth = args.ZDKSupportView.noResults.contactButtonBorderWidth;	
+				}
+				
+				if(args.ZDKSupportView.noResults.contactButtonCornerRadius){
+					ZDKSupportView.appearance().setNoResultsContactButtonCornerRadius = args.ZDKSupportView.noResults.contactButtonCornerRadius;	
+				}
+				
+				//Font
+				if(args.ZDKSupportView.noResults.foundLabelFont){
+					ZDKSupportView.appearance().setNoResultsFoundLabelFont = args.ZDKSupportView.noResults.foundLabelFont;	
+				}				
 			}
 		}
 		
@@ -103,6 +123,11 @@ exports.theme = function(args){
 			}
 			if(args.ZDKSupportTableViewCell.titleLabelColor){
 				ZDKSupportTableViewCell.appearance().titleLabelColor = getColor(args.ZDKSupportTableViewCell.titleLabelColor);	
+			}
+			
+			//Font
+			if(args.ZDKSupportTableViewCell.titleLabelFont){
+				ZDKSupportTableViewCell.appearance().titleLabelFont = args.ZDKSupportTableViewCell.titleLabelFont; 
 			}
 		}
 		
@@ -122,6 +147,15 @@ exports.theme = function(args){
 			if(args.ZDKSupportArticleTableViewCell.labelBackground){
 				ZDKSupportArticleTableViewCell.appearance().labelBackground = getColor(args.ZDKSupportArticleTableViewCell.labelBackground);	
 			}
+			
+			//Font
+			if(args.ZDKSupportArticleTableViewCell.titleLabelFont){
+				ZDKSupportArticleTableViewCell.appearance().titleLabelFont = args.ZDKSupportArticleTableViewCell.titleLabelFont;	
+			}
+			
+			if(args.ZDKSupportArticleTableViewCell.articleParentsLabelFont){
+				ZDKSupportArticleTableViewCell.appearance().articleParentsLabelFont = args.ZDKSupportArticleTableViewCell.articleParentsLabelFont;	
+			}
 		}
 		
 		if(args.ZDKSupportAttachmentCell){
@@ -139,6 +173,14 @@ exports.theme = function(args){
 			}
 			if(args.ZDKSupportAttachmentCell.fileSizeLabelColor){
 				ZDKSupportAttachmentCell.appearance().fileSizeLabelColor = getColor(args.ZDKSupportAttachmentCell.fileSizeLabelColor);	
+			}
+			
+			//Font
+			if(args.ZDKSupportAttachmentCell.titleLabelFont){
+				ZDKSupportAttachmentCell.appearance().titleLabelFont = args.ZDKSupportAttachmentCell.titleLabelFont;	
+			}
+			if(args.ZDKSupportAttachmentCell.fileSizeLabelFont){
+				ZDKSupportAttachmentCell.appearance().fileSizeLabelFont = getColor(args.ZDKSupportAttachmentCell.fileSizeLabelFont);	
 			}
 		}
 	}
@@ -165,22 +207,13 @@ UIActivityIndicatorView *hcSpinner = [[UIActivityIndicatorView alloc] initWithFr
 spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
 [[ZDKSupportView appearance] setSpinner:(id<ZDKSpinnerDelegate>)hcSpinner];
 
-[[ZDKSupportView appearance] setSearchBarStyle:@(UIBarStyleBlack)];
-[[ZDKSupportView appearance] setNoResultsFoundLabelFont:[UIFont systemFontOfSize:14.0f]];
-[[ZDKSupportView appearance] setNoResultsContactButtonBorderWidth:@1.0f];
-[[ZDKSupportView appearance] setNoResultsContactButtonCornerRadius:@4.0f];
-[[ZDKSupportView appearance] setNoResultsFoundLabelFont:[UIFont systemFontOfSize:14.0f]];
+
 [[ZDKSupportView appearance] setNoResultsContactButtonEdgeInsets:[NSValue valueWithUIEdgeInsets:UIEdgeInsetsMake(12, 22, 12, 22)]];
 
-//HC search cell
-[[ZDKSupportTableViewCell appearance] setTitleLabelFont:[UIFont systemFontOfSize:18.0f]];
-
-[[ZDKSupportArticleTableViewCell appearance] setTitleLabelFont:[UIFont systemFontOfSize:18.0f]];
-[[ZDKSupportArticleTableViewCell appearance] setArticleParentsLabelFont:[UIFont systemFontOfSize:12.0f]];
 
 
 
-[[ZDKSupportAttachmentCell appearance] setTitleLabelFont:[UIFont systemFontOfSize:12.0f]];
 
-[[ZDKSupportAttachmentCell appearance] setFileSizeLabelFont:[UIFont systemFontOfSize:12.0f]];
+
+
 */

@@ -49,32 +49,46 @@ if(app.ios){
 				viewBackgroundColor: "#E0E0E0",
 				tableBackgroundColor: "#E0E0E0",
 				separatorColor: "#E0E0E0",
-				noResultsFoundLabelColor: "#E0E0E0",
-				noResultsFoundLabelBackground: "#E0E0E0",
-				noResultsContactButtonBackground: "#E0E0E0",
-				noResultsContactButtonTitleColorNormal: "#E0E0E0",
-				noResultsContactButtonTitleColorHighlighted: "#E0E0E0",
-				noResultsContactButtonTitleColorDisabled: "#E0E0E0",
-				noResultsContactButtonBorderColor: "#E0E0E0"
+			
+				//0 = light, 1=dark
+				searchBarStyle: 0,
+				
+				noResults: {
+					foundLabelColor: "#E0E0E0",
+					foundLabelBackground: "#E0E0E0",
+					contactButtonBackground: "#E0E0E0",
+					contactButtonTitleColorNormal: "#E0E0E0",
+					contactButtonTitleColorHighlighted: "#E0E0E0",
+					contactButtonTitleColorDisabled: "#E0E0E0",
+					contactButtonBorderColor: "#E0E0E0",	
+					foundLabelFont: UIFont.fontWithNameSize("Lato", 16),
+					contactButtonBorderWidth: 1.0,
+					contactButtonCornerRadius: 4.0
+				} 
 			},
 			ZDKSupportTableViewCell: {
 				viewBackgroundColor: "#E0E0E0",
 				titleLabelBackground: "#E0E0E0",
-				titleLabelColor: "#E0E0E0"
+				titleLabelColor: "#E0E0E0",
+                titleLabelFont: UIFont.fontWithNameSize("Lato", 16)
 			},
 			ZDKSupportArticleTableViewCell: {
 				viewBackgroundColor: "#E0E0E0",
 				parentsLabelColor: "#E0E0E0",
 				parnetsLabelBackground: "#E0E0E0",
 				titleLabelColor: "#E0E0E0",
-				labelBackground: "#E0E0E0"
+				labelBackground: "#E0E0E0",
+				titleLabelFont: UIFont.fontWithNameSize("Lato", 16),
+				articleParentsLabelFont: UIFont.fontWithNameSize("Lato", 16)
 			},
 			ZDKSupportAttachmentCell: {
 				backgroundColor: "#E0E0E0",
 				titleLabelBackground: "#E0E0E0",
 				titleLabelColor: "#E0E0E0",
 				fileSizeLabelBackground: "#E0E0E0",
-				fileSizeLabelColor: "#E0E0E0"
+				fileSizeLabelColor: "#E0E0E0",
+				titleLabelFont: UIFont.fontWithNameSize("Lato", 16),
+				fileSizeLabelFont: UIFont.fontWithNameSize("Lato", 16)
 			}
 		};
 		
