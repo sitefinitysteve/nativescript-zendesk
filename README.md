@@ -43,7 +43,7 @@ var app = require("application");
 
 if(app.ios){
 	//Create the theme
-	//All of these propertoes are optional...
+	//All of these properties are optional...and it's all grey, so dont use colors verbatim :)
 	var myTheme = {
 			ZDKSupportView: {
 				viewBackgroundColor: "#E0E0E0",
