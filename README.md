@@ -50,7 +50,7 @@ if(app.ios){
 				tableBackgroundColor: "#E0E0E0",
 				separatorColor: "#E0E0E0",
 				noResultsFoundLabelColor: "#E0E0E0",
-				noResultsFoundLabelBackground: ""#E0E0E0,
+				noResultsFoundLabelBackground: "#E0E0E0",
 				noResultsContactButtonBackground: "#E0E0E0",
 				noResultsContactButtonTitleColorNormal: "#E0E0E0",
 				noResultsContactButtonTitleColorHighlighted: "#E0E0E0",
