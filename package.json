@@ -1,6 +1,6 @@
 {
   "name": "nativescript-zendesk",
-  "version": "v0.1.3",
+  "version": "v0.1.4",
   "description": "A NativeScript module for integrating Zendesk",
   "main": "index.js",
   "nativescript": {
