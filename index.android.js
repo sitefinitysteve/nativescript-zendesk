@@ -24,18 +24,15 @@ exports.openHelpCenter = function (style){
     
         var MyZendeskCallback = com.zendesk.service.ZendeskCallback.extend({
             onSuccess: function(args){
-                try{ 
-                    if(isAnonymous){
-                        loadAnonUser();
-                    }
-
-                    // 1) Sets the configuration used by the Contact Zendesk component
-                    //com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setContactConfiguration(new SampleFeedbackConfiguration());
-            
-                    new com.zendesk.sdk.support.SupportActivity.Builder().listCategories().show(activity);
-                } catch(args){
-                    console.log(args);
+                if(isAnonymous){
+                    loadAnonUser();
                 }
+
+                var sampleConfig = getConfig();
+
+                com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setContactConfiguration(sampleConfig);
+                
+                new com.zendesk.sdk.support.SupportActivity.Builder().listCategories().show(activity);
             },
             onError: function(error){
                 console.log(error);
@@ -72,4 +69,14 @@ exports.setTheme = function(args){
 function loadAnonUser(){
     var anonymousIdentity = new com.zendesk.sdk.model.access.AnonymousIdentity.Builder().build();
     com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setIdentity(anonymousIdentity);
+}
+
+function getConfig() {
+    var SampleFeedbackConfiguration = com.zendesk.sdk.feedback.impl.BaseZendeskFeedbackConfiguration.extend({
+        getRequestSubject: function() {
+            return "Feedback from our App";
+        }
+    });
+    
+    return new SampleFeedbackConfiguration();
 }
