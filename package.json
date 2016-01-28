@@ -1,12 +1,12 @@
 {
   "name": "nativescript-zendesk",
-  "version": "v0.1.4",
+  "version": "v0.1.6",
   "description": "A NativeScript module for integrating Zendesk",
   "main": "index.js",
   "nativescript": {
     "platforms": {
-      "android": "1.5.0",
-      "ios": "1.5.0"
+      "android": "1.5.1",
+      "ios": "1.5.1"
     }
   },
   "keywords": [

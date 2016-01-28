@@ -51,6 +51,40 @@ exports.openHelpCenter = function (style){
 	}
 }
 
+exports.openContactZendesk = function(style){
+    	if(isInitalized){
+    	   ZDKConfig.instance().initializeWithAppIdZendeskUrlClientIdOnSuccessOnError(account.appId, account.url, account.clientId,
+            //SUCCESS 
+            function(){
+                try{ 
+					if(isAnonymous){
+						loadAnonUser();
+					}
+					
+					var controller = frameModule.topmost().ios.controller;
+					
+					if(style === undefined){
+						controller.modalPresentationStyle = UIModalPresentationFormSheet;
+					} else{
+						controller.modalPresentationStyle = style;
+					}
+					
+                    ZDKRequests.showRequestCreationWithNavController(controller);
+                    
+                } catch(args){
+                    console.log(args);
+                }
+            }, 
+            //ERROR 
+            function zenDeskError(args){
+                 console.log(args);
+            });
+	} else{
+		console.log("Zendesk account info not initalized, please call the init function on the module");	
+	}
+}
+
+
 exports.setLocale = function(locale) {
 	ZDKConfig.instance().userLocale = locale;
 }

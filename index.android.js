@@ -1,4 +1,5 @@
 var frameModule = require("ui/frame");
+var application = require("application");
 
 var isAnonymous = true;
 var isInitalized = false;
@@ -53,6 +54,49 @@ exports.openHelpCenter = function (style){
 	} else{
 		console.log("Zendesk account info not initalized, please call the init function on the module");	
 	}
+}
+
+//NOT WORKING
+exports.openContactZendesk = function(){
+    console.log("Not Implimented yet")
+    /*
+   if(isInitalized){
+	   var activity = frameModule.topmost().android.activity;
+    
+    
+        var MyZendeskCallback = com.zendesk.service.ZendeskCallback.extend({
+            onSuccess: function(args){
+                if(isAnonymous){
+                    loadAnonUser();
+                }
+
+                var sampleConfig = getConfig();
+
+                com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setContactConfiguration(sampleConfig);
+                
+                var intent = new android.content.Intent(com.zendesk.sdk.feedback.ui.ContactZendeskActivity.class);
+                application.android.startActivity(intent); 
+            },
+            onError: function(error){
+                console.log(error);
+            }
+        });
+        
+        var callback = new MyZendeskCallback();
+        
+        com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.init(activity, 
+                                                                account.url,  
+                                                                account.appId, 
+                                                                account.clientId, 
+                                                                callback
+                                                            );
+                                                            
+
+        
+	} else{
+		console.log("Zendesk account info not initalized, please call the init function on the module");	
+	}
+    */
 }
 
 exports.setLocale = function(locale) {
