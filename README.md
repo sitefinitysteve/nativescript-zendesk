@@ -20,6 +20,11 @@ Open the Help Center
 zendesk.openHelpCenter();
 ```
 
+Open the Contact Screen
+```
+zendesk.openContact();
+```
+
 ## Options
 Set locale
 ```
@@ -86,6 +91,12 @@ zendesk.setTheme(myTheme);
 ```
 
 ### Android Theme
-None of the iOS methods work for android, styling is done in the Manifest
+None of the iOS methods work for android, styling is done in the Manifest (see the one in the plugin directory)
+
+```
+<activity android:name="com.zendesk.sdk.support.SupportActivity" android:theme="@style/Theme.AppCompat.Light"/>
+```
+
+NativeScripts default theme is 
 
 [Docs](https://developer.zendesk.com/embeddables/docs/android/customization)

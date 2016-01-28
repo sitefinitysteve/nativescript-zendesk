@@ -57,7 +57,7 @@ exports.openHelpCenter = function (style){
 }
 
 //NOT WORKING
-exports.openContactZendesk = function(){
+exports.openContact = function(){
     console.log("Not Implimented yet")
     /*
    if(isInitalized){

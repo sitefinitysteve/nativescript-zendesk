@@ -51,7 +51,7 @@ exports.openHelpCenter = function (style){
 	}
 }
 
-exports.openContactZendesk = function(style){
+exports.openContact = function(style){
     	if(isInitalized){
     	   ZDKConfig.instance().initializeWithAppIdZendeskUrlClientIdOnSuccessOnError(account.appId, account.url, account.clientId,
             //SUCCESS 
