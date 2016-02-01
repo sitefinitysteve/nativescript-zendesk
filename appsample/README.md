@@ -1,6 +1,4 @@
-# Zendesk Plugin for the NativeScript framework
-
-## Sample App
+# Sample App
 
 ## Setup
 - Create your Mobile SDK account in zendesk
