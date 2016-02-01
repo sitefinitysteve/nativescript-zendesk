@@ -1,0 +1,10 @@
+<Page loaded="pageLoaded" xmlns="http://schemas.nativescript.org/tns.xsd">
+    <Page.actionBar>
+        <ActionBar title="Zendesk" icon="">
+        </ActionBar>
+    </Page.actionBar>
+    <StackLayout>
+        <Button text="HelpCenter" tap="onLoadHelpCenter"/>
+        <Button text="Contact" tap="onLoadContact"/>
+    </StackLayout>
+</Page>
