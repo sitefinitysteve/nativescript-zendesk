@@ -10,7 +10,7 @@ var account = {
     anonymous: true
 }
 
-exports.init = function(appId, url, clientId, account.anonymous, enableLogging){
+exports.init = function(appId, url, clientId, enableLogging){
     return new Promise(function(resolve, reject){
         try{
             account.appId = appId;
