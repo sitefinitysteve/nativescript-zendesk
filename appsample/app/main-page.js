@@ -17,9 +17,9 @@ exports.onLoadContact = function(args){
 }
 
 function init(){
-    var appID = "";
-    var url = "";
-    var clientId = "";
+    var appID = "2cae45724539d7d7c8561aabfa133d39801e98a4ce1440a6";
+    var url = "https://nativescript.zendesk.com";
+    var clientId = "mobile_sdk_client_f86398df9a1b3f165f56";
     var isAnon = true; //Only true supported atm
     zendesk.init(appID, url, clientId, isAnon);
 }
