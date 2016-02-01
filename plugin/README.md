@@ -9,20 +9,19 @@ Add the plugin
 ```
 var zendesk = require("nativescript-zendesk");
 ```
-Initalize the plugin
-```
-var isAnon = true; //Only true supported atm
-zendesk.init(<appid>,<url>,<clientid>, isAnon);
-```
 
 Open the Help Center
 ```
-zendesk.openHelpCenter();
+zendesk.init(<appid>,<url>,<clientid>,<enablelogging (optional)>).then(function(account){
+    zendesk.openHelpCenter();    
+});
 ```
 
 Open the Contact Screen
 ```
-zendesk.openContact();
+zendesk.init(<appid>,<url>,<clientid>,<enablelogging (optional)>).then(function(account){
+    zendesk.openContact();    
+});
 ```
 
 ## Options
