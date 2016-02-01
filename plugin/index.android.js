@@ -46,8 +46,6 @@ exports.openHelpCenter = function (style){
 }
 
 exports.openContact = function(){
-  console.log("Not Implimented yet")
-
 	if(isInitalized){
 	 	var activity = frameModule.topmost().android.activity;
 
