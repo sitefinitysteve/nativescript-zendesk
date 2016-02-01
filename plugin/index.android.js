@@ -1,35 +1,50 @@
 var frameModule = require("ui/frame");
 var application = require("application");
 
-var isAnonymous = true;
-var isInitalized = false;
-var isLoggingEnabled = false;
-
 var account = {
 	appId: "",
 	url: "",
 	clientId: "",
+    loggingEnabled: false,
+    initalized: false,
+    anonymous: true
 }
 
-exports.init = function(appId, url, clientId, isAnonymous){
-	account.appId = appId;
-	account.url = url;
-	account.clientId = clientId;
-	isInitalized = true;
-	isAnonymous = isAnonymous;
+exports.init = function(appId, url, clientId, isAnonymous, enableLogging){
+    return new Promise(function(resolve, reject){
+        try{
+            account.appId = appId;
+            account.url = url;
+            account.clientId = clientId;
+            account.initalized = true;
+
+            if(enableLogging){
+                account.loggingEnabled = enableLogging;
+            }
+            
+            resolve(account);
+        }
+        catch(args){
+            reject(args);
+        }
+    });
+}
+
+exports.account = function (){
+    return account;
 }
 
 exports.logging = function(loggingEnabled){
-	isLoggingEnabled = loggingEnabled;
+	account.loggingEnabled = loggingEnabled;
 }
 
 exports.openHelpCenter = function (style){
-	if(isInitalized){
+	if(account.initalized){
         var activity = frameModule.topmost().android.activity;
 
         var MyZendeskCallback = com.zendesk.service.ZendeskCallback.extend({
             onSuccess: function(args){
-                if(isAnonymous){
+                if(account.anonymous){
                     loadAnonUser();
                 }
                 new com.zendesk.sdk.support.SupportActivity.Builder().listCategories().show(activity);
@@ -41,17 +56,17 @@ exports.openHelpCenter = function (style){
       initSdk(activity, new MyZendeskCallback())
 
 	} else{
-		console.log("Zendesk account info not initalized, please call the init function on the module");
+		notInitalized();
 	}
 }
 
 exports.openContact = function(){
-	if(isInitalized){
+	if(account.initalized){
 	 	var activity = frameModule.topmost().android.activity;
 
         var MyZendeskCallback = com.zendesk.service.ZendeskCallback.extend({
             onSuccess: function(args){
-                if(isAnonymous){
+                if(account.anonymous){
                     loadAnonUser();
                 }
                 
@@ -65,7 +80,7 @@ exports.openContact = function(){
 		initSdk(activity, new MyZendeskCallback())
 
 	} else{
-		console.log("Zendesk account info not initalized, please call the init function on the module");
+		notInitalized();
 	}
 }
 
@@ -82,12 +97,16 @@ exports.setTheme = function(args){
 // #####################################################
 function initSdk(activity, callback){
 	com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setContactConfiguration(getConfig());
-	com.zendesk.logger.Logger.setLoggable(isLoggingEnabled);
+	com.zendesk.logger.Logger.setLoggable(account.loggingEnabled);
 	com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.init(activity,
                                                             account.url,
                                                             account.appId,
                                                             account.clientId,
                                                             callback);
+}
+
+function notInitalized(){
+    throw "Zendesk account info not initalized, please call the init function on the module";
 }
 
 function loadAnonUser(){

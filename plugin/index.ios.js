@@ -1,37 +1,53 @@
 var frameModule = require("ui/frame");
 var colorModule = require("color");
-var isAnonymous = true;
-var isInitalized = false;
-var isLoggingEnabled = false;
-
 
 var account = {
 	appId: "",
 	url: "",
 	clientId: "",
+    loggingEnabled: false,
+    initalized: false,
+    anonymous: true
 }
 
-exports.init = function(appId, url, clientId, isAnonymous){
-	account.appId = appId;
-	account.url = url;
-	account.clientId = clientId;
-	isInitalized = true;
-	isAnonymous = isAnonymous;
+exports.init = function(appId, url, clientId, account.anonymous, enableLogging){
+    return new Promise(function(resolve, reject){
+        try{
+            account.appId = appId;
+            account.url = url;
+            account.clientId = clientId;
+            account.initalized = true;
+
+            if(enableLogging){
+                account.loggingEnabled = enableLogging;
+            }
+            
+            resolve(account);
+        }
+        catch(args){
+            reject(args);
+        }
+    });
+}
+
+exports.account = function (){
+    return account;
 }
 
 exports.logging = function(loggingEnabled){
-	isLoggingEnabled = loggingEnabled;
+	account.loggingEnabled = loggingEnabled;
 }
+
 
 /// Style from https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIViewController_Class/#//apple_ref/c/tdef/UIModalPresentationStyle
 exports.openHelpCenter = function (style){
-	if(isInitalized){
-		ZDKLogger.enable(isLoggingEnabled);
+	if(account.initalized){
+		ZDKLogger.enable(account.loggingEnabled);
 		ZDKConfig.instance().initializeWithAppIdZendeskUrlClientIdOnSuccessOnError(account.appId, account.url, account.clientId,
 			//SUCCESS
 			function(){
 				try{
-					if(isAnonymous){
+					if(account.anonymous){
 						loadAnonUser();
 					}
 
@@ -54,18 +70,18 @@ exports.openHelpCenter = function (style){
                  console.log(args);
             });
 	} else{
-		console.log("Zendesk account info not initalized, please call the init function on the module");
+		notInitalized();
 	}
 }
 
 exports.openContact = function(style){
-    if(isInitalized){
-        ZDKLogger.enable(isLoggingEnabled);
+    if(account.initalized){
+        ZDKLogger.enable(account.loggingEnabled);
         ZDKConfig.instance().initializeWithAppIdZendeskUrlClientIdOnSuccessOnError(account.appId, account.url, account.clientId,
             //SUCCESS
             function(){
                 try{
-					if(isAnonymous){
+					if(account.anonymous){
 						loadAnonUser();
 					}
 
@@ -88,7 +104,7 @@ exports.openContact = function(style){
                  console.log(args);
             });
 	} else{
-		console.log("Zendesk account info not initalized, please call the init function on the module");
+		notInitalized();
 	}
 }
 
@@ -240,6 +256,9 @@ function getColor(color){
 	return new colorModule.Color(color).ios;
 }
 
+function notInitalized(){
+    throw "Zendesk account info not initalized, please call the init function on the module";
+}
 
 
 //To Impliment
