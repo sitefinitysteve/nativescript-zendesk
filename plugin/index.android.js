@@ -25,18 +25,18 @@ exports.logging = function(loggingEnabled){
 
 exports.openHelpCenter = function (style){
 	if(isInitalized){
-  	var activity = frameModule.topmost().android.activity;
+        var activity = frameModule.topmost().android.activity;
 
-    var MyZendeskCallback = com.zendesk.service.ZendeskCallback.extend({
-    	onSuccess: function(args){
-	      	if(isAnonymous){
-	        	loadAnonUser();
-	        }
-	        new com.zendesk.sdk.support.SupportActivity.Builder().listCategories().show(activity);
-        },
-        onError: function(error){
-          console.log(error);
-        }
+        var MyZendeskCallback = com.zendesk.service.ZendeskCallback.extend({
+            onSuccess: function(args){
+                if(isAnonymous){
+                    loadAnonUser();
+                }
+                new com.zendesk.sdk.support.SupportActivity.Builder().listCategories().show(activity);
+            },
+            onError: function(error){
+                console.log(error);
+            }
       });
       initSdk(activity, new MyZendeskCallback())
 
@@ -51,18 +51,19 @@ exports.openContact = function(){
 	if(isInitalized){
 	 	var activity = frameModule.topmost().android.activity;
 
-	  var MyZendeskCallback = com.zendesk.service.ZendeskCallback.extend({
-      onSuccess: function(args){
-        if(isAnonymous){
-            loadAnonUser();
-        }
-				var intent = new android.content.Intent(activity, com.zendesk.sdk.feedback.ui.ContactZendeskActivity.class);
-				activity.startActivity(intent);
-      },
-      onError: function(error){
-        console.log(error);
-      }
-	  });
+        var MyZendeskCallback = com.zendesk.service.ZendeskCallback.extend({
+            onSuccess: function(args){
+                if(isAnonymous){
+                    loadAnonUser();
+                }
+                
+                var intent = new android.content.Intent(activity, com.zendesk.sdk.feedback.ui.ContactZendeskActivity.class);
+                activity.startActivity(intent);
+            },
+            onError: function(error){
+                console.log(error);
+            }
+        });
 		initSdk(activity, new MyZendeskCallback())
 
 	} else{
@@ -85,11 +86,10 @@ function initSdk(activity, callback){
 	com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setContactConfiguration(getConfig());
 	com.zendesk.logger.Logger.setLoggable(isLoggingEnabled);
 	com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.init(activity,
-																													account.url,
-																													account.appId,
-																													account.clientId,
-																													callback
-																											);
+                                                            account.url,
+                                                            account.appId,
+                                                            account.clientId,
+                                                            callback);
 }
 
 function loadAnonUser(){

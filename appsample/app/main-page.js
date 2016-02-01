@@ -1,19 +1,25 @@
 var viewModel = require("./main-view-model");
-//var zendesk = require("nativescript-zendesk");
+var zendesk = require("nativescript-zendesk");
 
 function pageLoaded(args) {
-    var appID = "";
-    var url = "";
-    var clientId = "";
-    var isAnon = true; //Only true supported atm
-    //zendesk.init(appID, url, clientId, isAnon);
+
 }
 
 
 exports.onLoadHelpCenter = function(args){
-    //zendesk.openHelpCenter();
+    init();
+    zendesk.openHelpCenter();
 }
 
 exports.onLoadContact = function(args){
-    //zendesk.openContact();
+    init();
+    zendesk.openContact();
+}
+
+function init(){
+    var appID = "";
+    var url = "";
+    var clientId = "";
+    var isAnon = true; //Only true supported atm
+    zendesk.init(appID, url, clientId, isAnon);
 }

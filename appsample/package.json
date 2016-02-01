@@ -1,8 +1,15 @@
 {
-	"nativescript": {
-		"id": "org.nativescript.app"
-	},
-	"dependencies": {
-		"tns-core-modules": "1.5.2"
-	}
+  "nativescript": {
+    "id": "org.nativescript.zendesk",
+    "tns-ios": {
+      "version": "1.5.2"
+    },
+    "tns-android": {
+      "version": "1.5.1"
+    }
+  },
+  "dependencies": {
+    "nativescript-zendesk": "file:../plugin",
+    "tns-core-modules": "1.5.2"
+  }
 }
