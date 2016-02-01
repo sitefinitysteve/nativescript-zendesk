@@ -100,3 +100,17 @@ None of the iOS methods work for android, styling is done in the Manifest (see t
 NativeScripts default theme is 
 
 [Docs](https://developer.zendesk.com/embeddables/docs/android/customization)
+
+## Sample App
+### Running the sample app
+In the app folder add your platform of choice
+```
+tns platform add android
+tns platform add ios
+```
+
+Run as normal
+```
+tns run ios
+tns run android
+```
