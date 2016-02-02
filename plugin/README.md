@@ -4,20 +4,25 @@
 - Create your Mobile SDK account in zendesk
 - https://domain.zendesk.com/agent/admin/mobile_sdk
 - Note your appid, url, and clientid for later
+- Make sure to activate your help center (if you want it) in your MobileSDK->Customization screen
 
 Add the plugin
 ```
-var zendesk = require("nativescript-zendesk");
+var zendeskModule = require("nativescript-zendesk");
+var zendesk = null; // Place to store the activated object
+
+//Somewhere on load
+zendesk = zendeskModule.init(<appid>,<url>,<clientid>,<enablelogging (optional)>);
 ```
 
 Open the Help Center
 ```
-zendesk.init(<appid>,<url>,<clientid>,<enablelogging (optional)>).openHelpCenter();
+zendesk.openHelpCenter();
 ```
 
 Open the Contact Screen
 ```
-zendesk.init(<appid>,<url>,<clientid>,<enablelogging (optional)>).openContact();
+zendesk.openContact();
 ```
 
 ## Options
@@ -88,6 +93,7 @@ zendesk.setTheme(myTheme);
 ### Android Theme
 None of the iOS methods work for android, styling is done in the Manifest (see the one in the plugin directory)
 
+Example:
 ```
 <activity android:name="com.zendesk.sdk.support.SupportActivity" android:theme="@style/Theme.AppCompat.Light"/>
 ```
