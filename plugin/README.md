@@ -12,14 +12,12 @@ var zendesk = require("nativescript-zendesk");
 
 Open the Help Center
 ```
-zendesk.init(<appid>,<url>,<clientid>,<enablelogging (optional)>);
-zendesk.openHelpCenter(); 
+zendesk.init(<appid>,<url>,<clientid>,<enablelogging (optional)>).openHelpCenter();
 ```
 
 Open the Contact Screen
 ```
-zendesk.init(<appid>,<url>,<clientid>,<enablelogging (optional)>);
-zendesk.openContact();
+zendesk.init(<appid>,<url>,<clientid>,<enablelogging (optional)>).openContact();
 ```
 
 ## Options
