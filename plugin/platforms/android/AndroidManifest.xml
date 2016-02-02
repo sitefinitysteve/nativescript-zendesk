@@ -3,17 +3,35 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
 
   <application>
-        <activity
-          android:name="com.zendesk.sdk.support.SupportActivity"
-          android:theme="@style/Theme.AppCompat.Light"/>
 
         <activity
-          android:name="com.zendesk.sdk.feedback.ui.ContactZendeskActivity"
-          android:theme="@style/Theme.AppCompat.Light"/>
+            android:name="com.zendesk.sdk.feedback.ui.ContactZendeskActivity"
+            android:label="@string/contact_fragment_title"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
 
         <activity
-          android:name="com.zendesk.sdk.support.ViewArticleActivity"
-          android:theme="@style/Theme.AppCompat.Light"/>
+            android:name="com.zendesk.sdk.requests.ViewRequestActivity"
+            android:label="@string/contact_fragment_title"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <activity
+            android:name="com.zendesk.sdk.requests.RequestActivity"
+            android:label="@string/request_list_activity_title"
+            android:theme="@style/Theme.AppCompat.Light" />
+
+        <activity
+            android:name="com.zendesk.sdk.support.SupportActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/support_activity_title"
+            android:theme="@style/Theme.AppCompat.Light" />
+
+        <activity
+            android:name="com.zendesk.sdk.support.ViewArticleActivity"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/Theme.AppCompat.Light"/>
+
   </application>
-  
+
 </manifest>
