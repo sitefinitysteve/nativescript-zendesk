@@ -11,23 +11,16 @@ var account = {
 }
 
 exports.init = function(appId, url, clientId, enableLogging){
-    return new Promise(function(resolve, reject){
-        try{
-            account.appId = appId;
-            account.url = url;
-            account.clientId = clientId;
-            account.initalized = true;
+    account.appId = appId;
+    account.url = url;
+    account.clientId = clientId;
+    account.initalized = true;
 
-            if(enableLogging){
-                account.loggingEnabled = enableLogging;
-            }
-            
-            resolve(account);
-        }
-        catch(args){
-            reject(args);
-        }
-    });
+    if(enableLogging){
+        account.loggingEnabled = enableLogging;
+    }
+    
+    return account;
 }
 
 exports.account = function (){

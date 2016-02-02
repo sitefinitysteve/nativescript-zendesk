@@ -16,9 +16,8 @@ describe('Help Center', function () {
     
     it('can launch initalized HC', function () {
         try{
-            zendesk.init(appID, url, clientId, false).then(function(){
-                 zendesk.openHelpCenter();
-            })
+            zendesk.init(appID, url, clientId, false);
+            zendesk.openHelpCenter();
             assert.isTrue(true);
         }catch(args){
             assert.isTrue(false);
@@ -28,19 +27,18 @@ describe('Help Center', function () {
 
 describe('Account', function () {
     it('init() should return initalized', function () {
-        zendesk.init(appID, url, clientId, false).then(function(account){
-            assert.isTrue(account.initalized === true);
-        });
+        var account = zendesk.init(appID, url, clientId, false);
+        assert.isTrue(account.initalized === true);
     });
     
-    it('logging should be optional', function () {
-        zendesk.init(appID, url, clientId).then(function(account){
-            assert.isTrue(account.loggingEnabled === false);
-        });
-        
-        zendesk.init(appID, url, clientId, true).then(function(account){
-            assert.isTrue(account.loggingEnabled === true);
-        });
+    it('logging should initalize to false', function () {
+        var account = zendesk.init(appID, url, clientId, false);
+        assert.isTrue(account.loggingEnabled === false);
+    });
+    
+    it('logging can be initalized to true', function () {
+        var account = zendesk.init(appID, url, clientId, true);
+        assert.isTrue(account.loggingEnabled === true);
     });
 });
 
