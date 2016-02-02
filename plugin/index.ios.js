@@ -20,7 +20,7 @@ exports.init = function(appId, url, clientId, enableLogging){
         account.loggingEnabled = enableLogging;
     }
     
-    return account;
+    return this;
 }
 
 exports.account = function (){

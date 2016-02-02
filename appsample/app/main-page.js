@@ -1,25 +1,26 @@
 var viewModel = require("./main-view-model");
 var zendesk = require("nativescript-zendesk");
 
+var appID = "2cae45724539d7d7c8561aabfa133d39801e98a4ce1440a6";
+var url = "https://nativescript.zendesk.com";
+var clientId = "mobile_sdk_client_f86398df9a1b3f165f56";
+
 function pageLoaded(args) {
 
 }
 
 
 exports.onLoadHelpCenter = function(args){
-    init();
-    zendesk.openHelpCenter();
+    zendesk.init(appID, url, clientId).openHelpCenter();
+    //zendesk;
 }
 
 exports.onLoadContact = function(args){
-    init();
-    zendesk.openContact();
+    zendesk.init(appID, url, clientId).openContact();
+    //zendesk;
 }
 
 function init(){
-    var appID = "2cae45724539d7d7c8561aabfa133d39801e98a4ce1440a6";
-    var url = "https://nativescript.zendesk.com";
-    var clientId = "mobile_sdk_client_f86398df9a1b3f165f56";
-    var isAnon = true; //Only true supported atm
-    zendesk.init(appID, url, clientId, isAnon);
+
+    
 }
