@@ -1,6 +1,6 @@
 {
   "name": "nativescript-zendesk",
-  "version": "v0.2.0",
+  "version": "v0.2.1",
   "description": "A NativeScript module for integrating Zendesk",
   "main": "index.js",
   "nativescript": {
@@ -8,6 +8,10 @@
       "android": "1.5.1",
       "ios": "1.5.1"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sitefinitysteve/nativescript-zendesk.git"
   },
   "keywords": [
     "NativeScript",
