@@ -1,10 +1,20 @@
 <Page loaded="pageLoaded" xmlns="http://schemas.nativescript.org/tns.xsd">
     <Page.actionBar>
-        <ActionBar title="Zendesk" icon="">
+        <ActionBar title="Zendesk Test Central" icon="">
         </ActionBar>
     </Page.actionBar>
     <StackLayout>
-        <Button text="HelpCenter" tap="onLoadHelpCenter"/>
-        <Button text="Contact" tap="onLoadContact"/>
+        <StackLayout class="commands">
+            <Label text="Commands" textWrap="true" class="title" />
+            <Button text="HelpCenter" tap="onLoadHelpCenter"/>
+            <Button text="Contact" tap="onLoadContact"/>
+        </StackLayout>
+
+        <StackLayout class="auth">
+            <Label text="Optional Auth Details" textWrap="true" class="title" />
+            <TextField hint="Id" text="{{ id }}" />
+            <TextField hint="Name" text="{{ name }}" />
+            <TextField hint="Email" text="{{ email }}" />
+        </StackLayout>
     </StackLayout>
 </Page>

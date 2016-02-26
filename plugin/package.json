@@ -1,6 +1,6 @@
 {
   "name": "nativescript-zendesk",
-  "version": "v0.2.1",
+  "version": "v0.2.2",
   "description": "A NativeScript module for integrating Zendesk",
   "main": "index.js",
   "nativescript": {
@@ -22,7 +22,18 @@
     "iOS",
     "Android"
   ],
-  "author": "Steve McNiven-Scott <steve@sitefinitysteve.com> (https://github.com/sitefinitysteve)",
+  "author": {
+    "name": "Steve McNiven-Scott",
+    "email": "steve@sitefinitysteve.com",
+    "url": "https://github.com/sitefinitysteve"
+  },
+  "contributors": [
+    {
+      "name": "Antonio Cueva Urraco",
+      "email": "antonio.cueva@smarp.com",
+      "url": "https://github.com/AntonioCuevaUrraco"
+    }
+  ],
   "readmeFilename": "README.md",
   "license": "Apache-2.0",
   "bugs": "https://github.com/sitefinitysteve/nativescript-zendesk/issues",

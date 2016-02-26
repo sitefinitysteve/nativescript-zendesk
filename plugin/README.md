@@ -7,7 +7,7 @@
 - Make sure to activate your help center (if you want it) in your MobileSDK->Customization screen
 
 Add the plugin
-```
+```js
 var zendeskModule = require("nativescript-zendesk");
 var zendesk = null; // Place to store the activated object
 
@@ -16,12 +16,12 @@ zendesk = zendeskModule.init(<appid>,<url>,<clientid>,<enablelogging (optional)>
 ```
 
 Open the Help Center
-```
+```js
 zendesk.openHelpCenter();
 ```
 
 Open the Contact Screen
-```
+```js
 zendesk.openContact();
 ```
 
@@ -29,6 +29,13 @@ zendesk.openContact();
 Set locale
 ```
 zendesk.setLocale("fr_CA");
+```
+
+Set identify a user
+```js
+    zendesk.identifyUser("users id", "some user name", "fake@thisuser.com"); //Optional, defaults to anon if not set
+        
+    zendesk.openContact();
 ```
 
 ### iOS Theme

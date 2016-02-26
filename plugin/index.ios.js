@@ -1,21 +1,10 @@
 var frameModule = require("ui/frame");
 var colorModule = require("color");
+var zen = require("./zenmodel-common");
 
-var account = {
-	appId: "",
-	url: "",
-	clientId: "",
-    loggingEnabled: false,
-    initialized: false,
-    anonymous: true
-}
+var account = zen.account;
+var user = zen.user;
 
-var user = {
-  nameIdentifier: "",
-  externalIdentifier: "",
-  emailIdentifier: "",
-  initialized: false
-}
 exports.init = function(appId, url, clientId, enableLogging){
     account.appId = appId;
     account.url = url;
@@ -28,11 +17,11 @@ exports.init = function(appId, url, clientId, enableLogging){
     
     return this;
 }
-exports.identifyUser = function (name, id, email){
-    user.nameIdentifier=name;
-    user.externalIdentifier=id;
-    user.emailIdentifier=email;
-    user.initialized = true;
+
+exports.identifyUser = function (id, name, email){
+    user.id=id;
+    user.name=name;
+    user.email=email;
 }
 
 exports.account = function (){
@@ -42,7 +31,6 @@ exports.account = function (){
 exports.logging = function(loggingEnabled){
 	account.loggingEnabled = loggingEnabled;
 }
-
 
 /// Style from https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIViewController_Class/#//apple_ref/c/tdef/UIModalPresentationStyle
 exports.openHelpCenter = function (style){
@@ -255,10 +243,10 @@ exports.setTheme = function(args){
 function loadAnonUser(){
     var anonymousIdentity = new ZDKAnonymousIdentity()
 
-	if(user.initialized){
-	  	anonymousIdentity.name = user.nameIdentifier;
-	  	anonymousIdentity.externalId = user.externalIdentifier;
-	  	anonymousIdentity.email = user.emailIdentifier;
+	if(user.isInitalized()){
+	  	anonymousIdentity.name = user.name;
+	  	anonymousIdentity.externalId = user.id;
+	  	anonymousIdentity.email = user.email;
 	}
 
 	ZDKConfig.instance().setUserIdentity(anonymousIdentity);
