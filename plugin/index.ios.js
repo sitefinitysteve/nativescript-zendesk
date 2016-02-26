@@ -6,21 +6,33 @@ var account = {
 	url: "",
 	clientId: "",
     loggingEnabled: false,
-    initalized: false,
+    initialized: false,
     anonymous: true
 }
 
+var user = {
+  nameIdentifier: "",
+  externalIdentifier: "",
+  emailIdentifier: "",
+  initialized: false
+}
 exports.init = function(appId, url, clientId, enableLogging){
     account.appId = appId;
     account.url = url;
     account.clientId = clientId;
-    account.initalized = true;
+    account.initialized = true;
 
     if(enableLogging){
         account.loggingEnabled = enableLogging;
     }
     
     return this;
+}
+exports.identifyUser = function (name, id, email){
+    user.nameIdentifier=name;
+    user.externalIdentifier=id;
+    user.emailIdentifier=email;
+    user.initialized = true;
 }
 
 exports.account = function (){
@@ -34,7 +46,7 @@ exports.logging = function(loggingEnabled){
 
 /// Style from https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIViewController_Class/#//apple_ref/c/tdef/UIModalPresentationStyle
 exports.openHelpCenter = function (style){
-	if(account.initalized){
+	if(account.initialized){
 		ZDKLogger.enable(account.loggingEnabled);
 		ZDKConfig.instance().initializeWithAppIdZendeskUrlClientIdOnSuccessOnError(account.appId, account.url, account.clientId,
 			//SUCCESS
@@ -63,12 +75,12 @@ exports.openHelpCenter = function (style){
                  console.log(args);
             });
 	} else{
-		notInitalized();
+		notInitialized();
 	}
 }
 
 exports.openContact = function(style){
-    if(account.initalized){
+    if(account.initialized){
         ZDKLogger.enable(account.loggingEnabled);
         ZDKConfig.instance().initializeWithAppIdZendeskUrlClientIdOnSuccessOnError(account.appId, account.url, account.clientId,
             //SUCCESS
@@ -97,7 +109,7 @@ exports.openContact = function(style){
                  console.log(args);
             });
 	} else{
-		notInitalized();
+		notInitialized();
 	}
 }
 
@@ -241,7 +253,14 @@ exports.setTheme = function(args){
 // ## METHODS
 // #####################################################
 function loadAnonUser(){
-	var anonymousIdentity = new ZDKAnonymousIdentity();
+    var anonymousIdentity = new ZDKAnonymousIdentity()
+
+	if(user.initialized){
+	  	anonymousIdentity.name = user.nameIdentifier;
+	  	anonymousIdentity.externalId = user.externalIdentifier;
+	  	anonymousIdentity.email = user.emailIdentifier;
+	}
+
 	ZDKConfig.instance().setUserIdentity(anonymousIdentity);
 }
 
@@ -249,8 +268,8 @@ function getColor(color){
 	return new colorModule.Color(color).ios;
 }
 
-function notInitalized(){
-    throw "Zendesk account info not initalized, please call the init function on the module";
+function notInitialized(){
+    throw "Zendesk account info not initialized, please call the init function on the module";
 }
 
 
