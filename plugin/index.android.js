@@ -6,21 +6,35 @@ var account = {
 	url: "",
 	clientId: "",
     loggingEnabled: false,
-    initalized: false,
+    initialized: false,
     anonymous: true
+}
+
+var user = {
+  nameIdentifier: "",
+  externalIdentifier: "",
+  emailIdentifier: "",
+  initialized: false
 }
 
 exports.init = function(appId, url, clientId, enableLogging){
     account.appId = appId;
     account.url = url;
     account.clientId = clientId;
-    account.initalized = true;
+    account.initialized = true;
 
     if(enableLogging){
         account.loggingEnabled = enableLogging;
     }
     
     return this;
+}
+
+exports.identifyUser = function (name, id, email){
+    user.nameIdentifier=name;
+    user.externalIdentifier=id;
+    user.emailIdentifier=email;
+    user.initialized = true;
 }
 
 exports.account = function (){
@@ -32,7 +46,7 @@ exports.logging = function(loggingEnabled){
 }
 
 exports.openHelpCenter = function (style){
-	if(account.initalized){
+    if(account.initialized){
         var activity = frameModule.topmost().android.activity;
 
         var MyZendeskCallback = com.zendesk.service.ZendeskCallback.extend({
@@ -48,13 +62,13 @@ exports.openHelpCenter = function (style){
       });
       initSdk(activity, new MyZendeskCallback())
 
-	} else{
-		notInitalized();
-	}
+    } else{
+      notInitialized();
+    }
 }
 
 exports.openContact = function(){
-	if(account.initalized){
+   if(account.initialized){
 	 	var activity = frameModule.topmost().android.activity;
 
         var MyZendeskCallback = com.zendesk.service.ZendeskCallback.extend({
@@ -73,7 +87,7 @@ exports.openContact = function(){
 		initSdk(activity, new MyZendeskCallback())
 
 	} else{
-		notInitalized();
+    notInitialized();
 	}
 }
 
@@ -98,13 +112,23 @@ function initSdk(activity, callback){
                                                             callback);
 }
 
-function notInitalized(){
+function notInitialized(){
     throw "Zendesk account info not initalized, please call the init function on the module";
 }
 
 function loadAnonUser(){
-  var anonymousIdentity = new com.zendesk.sdk.model.access.AnonymousIdentity.Builder().build();
-  com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setIdentity(anonymousIdentity);
+  if(user.initialized){
+    var identity = new com.zendesk.sdk.model.access.AnonymousIdentity.Builder()
+    .withNameIdentifier(user.nameIdentifier)
+    .withExternalIdentifier(user.externalIdentifier)
+    .withEmailIdentifier(user.emailIdentifier)
+    .build();
+    com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setIdentity(identity);
+  }
+  else{
+    var anonymousIdentity = new com.zendesk.sdk.model.access.AnonymousIdentity.Builder().build();
+    com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setIdentity(anonymousIdentity);
+  }
 }
 
 function getConfig() {
