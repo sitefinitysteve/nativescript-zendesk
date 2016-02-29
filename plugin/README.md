@@ -104,9 +104,9 @@ And add your custom theme to the App_resources/Android/values/styles.xml
 
 ```xml
 <style name="ZendeskTheme" parent="Theme.AppCompat.Light">
-		<!-- THIS is where you can set the accent color -->
-		<item name="colorAccent">@color/ns_accent</item>
-	    <item name="actionBarTheme">@style/MyApp.ActionBarTheme</item>
+	<!-- THIS is where you can set the accent color -->
+	<item name="colorAccent">@color/ns_accent</item>
+	<item name="actionBarTheme">@style/MyApp.ActionBarTheme</item>
 </style>
 
 <style name="MyApp.ActionBarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">       
