@@ -91,13 +91,31 @@ zendesk.setTheme(myTheme);
 ```
 
 ### Android Theme
-None of the iOS methods work for android, styling is done in the Manifest (see the one in the plugin directory)
+None of the iOS methods work for android, styling is done in the Manifest/Style file (see the one in the plugin directory)
 
 Example:
-```
-<activity android:name="com.zendesk.sdk.support.SupportActivity" android:theme="@style/Theme.AppCompat.Light"/>
+By default Zendesk activities are using Theme.AppCompact.Light. If you want to customize this you have to change the android:theme="@style/Theme.AppCompat.Light" for some other style:
+
+```xml
+<activity android:name="com.zendesk.sdk.support.SupportActivity" android:theme="@style/@style/ZendeskTheme"/>
 ```
 
-NativeScripts default theme is 
+And add your custom theme to the App_resources/Android/values/styles.xml
+
+```xml
+<style name="ZendeskTheme" parent="Theme.AppCompat.Light">
+		<!-- THIS is where you can set the accent color -->
+		<item name="colorAccent">@color/ns_accent</item>
+	    <item name="actionBarTheme">@style/MyApp.ActionBarTheme</item>
+</style>
+
+<style name="MyApp.ActionBarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">       
+    <!-- THIS is where you can color the back arrow! -->
+    <item name="colorControlNormal">@color/ns_accent</item>
+</style>
+
+```
+
+Zendesk documentation is: 
 
 [Docs](https://developer.zendesk.com/embeddables/docs/android/customization)
