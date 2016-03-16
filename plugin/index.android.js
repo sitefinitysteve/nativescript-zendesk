@@ -63,16 +63,48 @@ exports.openHelpCenter = function (style){
     }
 }
 
-exports.openContact = function(){
+exports.openContactList = function(){
    if(account.initialized){
 	 	var activity = frameModule.topmost().android.activity;
-
+         
+        if(account.locale !== "" && account.locale !== null){
+            com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setDeviceLocale(account.locale);
+        }
+        
         var MyZendeskCallback = com.zendesk.service.ZendeskCallback.extend({
             onSuccess: function(args){
                 if(account.anonymous){
                     loadAnonUser();
                 }
                 
+                var intent = new android.content.Intent(activity, com.zendesk.sdk.requests.RequestActivity.class);
+                activity.startActivity(intent);
+            },
+            onError: function(error){
+                console.log(error);
+            }
+        });
+		initSdk(activity, new MyZendeskCallback())
+
+	} else{
+    notInitialized();
+	}
+}
+
+exports.createContactRequest = function(){
+   if(account.initialized){
+	 	var activity = frameModule.topmost().android.activity;
+         
+        if(account.locale !== "" && account.locale !== null){
+            com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setDeviceLocale(account.locale);
+        }
+        
+        var MyZendeskCallback = com.zendesk.service.ZendeskCallback.extend({
+            onSuccess: function(args){
+                if(account.anonymous){
+                    loadAnonUser();
+                }
+                debugger;
                 var intent = new android.content.Intent(activity, com.zendesk.sdk.feedback.ui.ContactZendeskActivity.class);
                 activity.startActivity(intent);
             },

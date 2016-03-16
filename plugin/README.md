@@ -26,9 +26,14 @@ Open the Help Center
 zendesk.openHelpCenter();
 ```
 
-Open the Contact Screen
+Open the Request Contact List, shows previous conversations and ability to create new
 ```js
-zendesk.openContact();
+zendesk.openContactList();
+```
+
+Open the Create new Request screen
+```js
+zendesk.createContactRequest();
 ```
 
 ## Options
@@ -36,7 +41,7 @@ Set identify a user
 ```js
     zendesk.identifyUser("users id", "some user name", "fake@thisuser.com"); //Optional, defaults to anon if not set
         
-    zendesk.openContact();
+    zendesk.createContactRequest();
 ```
 
 ### iOS Theme
@@ -109,3 +114,7 @@ Example:
 NativeScripts default theme is 
 
 [Docs](https://developer.zendesk.com/embeddables/docs/android/customization)
+
+
+### Other Notes ###
+* [Android SDK Docs](https://zdmobilesdkdocdev.herokuapp.com/android-sdk/)

@@ -40,7 +40,7 @@ exports.logging = function(loggingEnabled){
 exports.openHelpCenter = function (style){
 	if(account.initialized){
 		ZDKLogger.enable(account.loggingEnabled);
-        
+
         if(account.locale !== "" && account.locale !== null){
             var iOSlocale = NSString.alloc().initWithString(account.locale);
 	        ZDKConfig.instance().userLocale = iOSlocale;
@@ -77,9 +77,55 @@ exports.openHelpCenter = function (style){
 	}
 }
 
-exports.openContact = function(style){
+exports.openContactList = function(style){
     if(account.initialized){
         ZDKLogger.enable(account.loggingEnabled);
+        
+        if(account.locale !== "" && account.locale !== null){
+            var iOSlocale = NSString.alloc().initWithString(account.locale);
+	        ZDKConfig.instance().userLocale = iOSlocale;
+        }
+        
+        ZDKConfig.instance().initializeWithAppIdZendeskUrlClientIdOnSuccessOnError(account.appId, account.url, account.clientId,
+            //SUCCESS
+            function(){
+                try{
+					if(account.anonymous){
+						loadAnonUser();
+					}
+
+					var controller = frameModule.topmost().ios.controller;
+
+					if(style === undefined){
+						controller.modalPresentationStyle = UIModalPresentationFormSheet;
+					} else{
+						controller.modalPresentationStyle = style;
+					}
+
+                    ZDKRequests.presentRequestListWithNavController(controller);
+
+                } catch(args){
+                    console.log(args);
+                }
+            },
+            //ERROR
+            function zenDeskError(args){
+                 console.log(args);
+            });
+	} else{
+		notInitialized();
+	}
+}
+
+exports.createContactRequest = function(style){
+    if(account.initialized){
+        ZDKLogger.enable(account.loggingEnabled);
+        
+        if(account.locale !== "" && account.locale !== null){
+            var iOSlocale = NSString.alloc().initWithString(account.locale);
+	        ZDKConfig.instance().userLocale = iOSlocale;
+        }
+        
         ZDKConfig.instance().initializeWithAppIdZendeskUrlClientIdOnSuccessOnError(account.appId, account.url, account.clientId,
             //SUCCESS
             function(){
@@ -110,6 +156,7 @@ exports.openContact = function(style){
 		notInitialized();
 	}
 }
+
 
 
 // #####################################################

@@ -28,10 +28,17 @@ exports.onLoadHelpCenter = function(args){
     zendesk.openHelpCenter();
 }
 
-exports.onLoadContact = function(args){
+exports.onCreateContact = function(args){
     if(viewModel.hasAuthSet())
         zendesk.identifyUser(viewModel.id, viewModel.name, viewModel.email);
         
-    zendesk.openContact();
+    zendesk.createContactRequest();
+}
+
+exports.onLoadContact = function(args){
+    if(viewModel.hasAuthSet())
+        zendesk.identifyUser(viewModel.id, viewModel.name, viewModel.email);
+     debugger;   
+    zendesk.openContactList();
 }
 
