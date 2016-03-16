@@ -11,7 +11,13 @@ var clientId = "mobile_sdk_client_f86398df9a1b3f165f56";
 exports.pageLoaded = function(args) {
     page = args.object;
     page.bindingContext = viewModel;
-    zendesk = zendeskModule.init(appID, url, clientId);
+
+    zendesk = zendeskModule.init({
+        appId: appID, //required
+        url: url, //required
+        clientId: clientId, //required
+        enableLogging: true
+    });
 }
 
 

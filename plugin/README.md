@@ -12,7 +12,13 @@ var zendeskModule = require("nativescript-zendesk");
 var zendesk = null; // Place to store the activated object
 
 //Somewhere on load
-zendesk = zendeskModule.init(<appid>,<url>,<clientid>,<enablelogging (optional)>);
+zendesk = zendeskModule.init({
+    appId: "", //required
+    url: "", //required
+    clientId: "", //required
+    enableLogging: true, //optional, bool
+    locale: "en-us" //optional, string
+});
 ```
 
 Open the Help Center
@@ -26,11 +32,6 @@ zendesk.openContact();
 ```
 
 ## Options
-Set locale
-```
-zendesk.setLocale("fr_CA");
-```
-
 Set identify a user
 ```js
     zendesk.identifyUser("users id", "some user name", "fake@thisuser.com"); //Optional, defaults to anon if not set

@@ -5,14 +5,18 @@ var zen = require("./zenmodel-common");
 var account = zen.account;
 var user = zen.user;
 
-exports.init = function(appId, url, clientId, enableLogging){
-    account.appId = appId;
-    account.url = url;
-    account.clientId = clientId;
+exports.init = function(config){
+    account.appId = config.appId;
+    account.url = config.url;
+    account.clientId = config.clientId;
     account.initialized = true;
 
-    if(enableLogging){
-        account.loggingEnabled = enableLogging;
+    if(config.enableLogging){
+        account.loggingEnabled = config.enableLogging;
+    }
+    
+    if(config.locale){
+        account.locale = config.locale;
     }
     
     return this;
@@ -36,6 +40,12 @@ exports.logging = function(loggingEnabled){
 exports.openHelpCenter = function (style){
 	if(account.initialized){
 		ZDKLogger.enable(account.loggingEnabled);
+        
+        if(account.locale !== "" && account.locale !== null){
+            var iOSlocale = NSString.alloc().initWithString(account.locale);
+	        ZDKConfig.instance().userLocale = iOSlocale;
+        }
+        
 		ZDKConfig.instance().initializeWithAppIdZendeskUrlClientIdOnSuccessOnError(account.appId, account.url, account.clientId,
 			//SUCCESS
 			function(){
@@ -101,10 +111,6 @@ exports.openContact = function(style){
 	}
 }
 
-
-exports.setLocale = function(locale) {
-	ZDKConfig.instance().userLocale = locale;
-}
 
 // #####################################################
 // ## THEME ZONE, WHERE THE THEME GOES TO PARTY

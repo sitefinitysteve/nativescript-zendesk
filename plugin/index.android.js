@@ -5,15 +5,19 @@ var zen = require("./zenmodel-common");
 var account = zen.account;
 var user = zen.user;
 
-exports.init = function(appId, url, clientId, enableLogging){
-    account.appId = appId;
-    account.url = url;
-    account.clientId = clientId;
+exports.init = function(config){
+    account.appId = config.appId;
+    account.url = config.url;
+    account.clientId = config.clientId;
     account.initialized = true;
     account.ticketSubject = "App ticket: Android"
 
-    if(enableLogging){
-        account.loggingEnabled = enableLogging;
+    if(config.enableLogging){
+        account.loggingEnabled = config.enableLogging;
+    }
+    
+    if(config.locale){
+        account.locale = config.locale;
     }
     
     return this;
@@ -37,6 +41,10 @@ exports.openHelpCenter = function (style){
     if(account.initialized){
         var activity = frameModule.topmost().android.activity;
 
+        if(account.locale !== "" && account.locale !== null){
+            com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setDeviceLocale(account.locale);
+        }
+        
         var MyZendeskCallback = com.zendesk.service.ZendeskCallback.extend({
             onSuccess: function(args){
                 if(account.anonymous){
@@ -77,10 +85,6 @@ exports.openContact = function(){
 	} else{
     notInitialized();
 	}
-}
-
-exports.setLocale = function(locale) {
-	com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setDeviceLocale(locale);
 }
 
 exports.setTheme = function(args){

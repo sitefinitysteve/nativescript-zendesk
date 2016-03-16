@@ -7,7 +7,8 @@ exports.account = {
     ticketSubject: "",
     loggingEnabled: false,
     initialized: false,
-    anonymous: true
+    anonymous: true,
+    locale: null
 }
 
 exports.user = {
