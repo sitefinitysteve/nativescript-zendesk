@@ -42,8 +42,8 @@ exports.openHelpCenter = function (style){
         var activity = frameModule.topmost().android.activity;
 
         if(account.locale !== "" && account.locale !== null){
-            var locale = new java.util.Locale(account.locale);
-            com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setDeviceLocale(locale);
+            //var locale = new java.util.Locale(account.locale);
+            //com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setDeviceLocale(locale);
         }
         
         var MyZendeskCallback = com.zendesk.service.ZendeskCallback.extend({
@@ -69,8 +69,8 @@ exports.openContactList = function(){
 	 	var activity = frameModule.topmost().android.activity;
          
         if(account.locale !== "" && account.locale !== null){
-            var locale = new java.util.Locale(account.locale);
-            com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setDeviceLocale(locale);
+            //var locale = new java.util.Locale(account.locale);
+            //com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setDeviceLocale(locale);
         }
         
         var MyZendeskCallback = com.zendesk.service.ZendeskCallback.extend({
@@ -98,8 +98,8 @@ exports.createContactRequest = function(){
 	 	var activity = frameModule.topmost().android.activity;
          
         if(account.locale !== "" && account.locale !== null){
-            var locale = new java.util.Locale(account.locale);
-            com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setDeviceLocale(locale);
+           // var locale = new java.util.Locale(account.locale);
+            //com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setDeviceLocale(locale);
         }
         
         var MyZendeskCallback = com.zendesk.service.ZendeskCallback.extend({
@@ -107,7 +107,7 @@ exports.createContactRequest = function(){
                 if(account.anonymous){
                     loadAnonUser();
                 }
-                debugger;
+
                 var intent = new android.content.Intent(activity, com.zendesk.sdk.feedback.ui.ContactZendeskActivity.class);
                 activity.startActivity(intent);
             },
