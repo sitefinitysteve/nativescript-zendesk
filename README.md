@@ -4,6 +4,9 @@
 * [Plugin](https://github.com/sitefinitysteve/nativescript-zendesk/tree/master/plugin)
 
 # Release Notes #
+## 0.2.7 ##
+* Allow loading the helpcenter to a specific category or section
+
 ## 0.2.4 ##
 * **BREAKING: ** openContact method removed, replaced with openContactList and createContactRequest
 
