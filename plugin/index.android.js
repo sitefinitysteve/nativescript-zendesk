@@ -42,7 +42,8 @@ exports.openHelpCenter = function (style){
         var activity = frameModule.topmost().android.activity;
 
         if(account.locale !== "" && account.locale !== null){
-            com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setDeviceLocale(account.locale);
+            var locale = new java.util.Locale(account.locale);
+            com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setDeviceLocale(locale);
         }
         
         var MyZendeskCallback = com.zendesk.service.ZendeskCallback.extend({
@@ -68,7 +69,8 @@ exports.openContactList = function(){
 	 	var activity = frameModule.topmost().android.activity;
          
         if(account.locale !== "" && account.locale !== null){
-            com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setDeviceLocale(account.locale);
+            var locale = new java.util.Locale(account.locale);
+            com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setDeviceLocale(locale);
         }
         
         var MyZendeskCallback = com.zendesk.service.ZendeskCallback.extend({
@@ -96,7 +98,8 @@ exports.createContactRequest = function(){
 	 	var activity = frameModule.topmost().android.activity;
          
         if(account.locale !== "" && account.locale !== null){
-            com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setDeviceLocale(account.locale);
+            var locale = new java.util.Locale(account.locale);
+            com.zendesk.sdk.network.impl.ZendeskConfig.INSTANCE.setDeviceLocale(locale);
         }
         
         var MyZendeskCallback = com.zendesk.service.ZendeskCallback.extend({
