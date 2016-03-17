@@ -36,126 +36,67 @@ exports.logging = function(loggingEnabled){
 	account.loggingEnabled = loggingEnabled;
 }
 
-/// Style from https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIViewController_Class/#//apple_ref/c/tdef/UIModalPresentationStyle
-exports.openHelpCenter = function (style){
-	if(account.initialized){
-		ZDKLogger.enable(account.loggingEnabled);
-
-        if(account.locale !== "" && account.locale !== null){
-            var iOSlocale = NSString.alloc().initWithString(account.locale);
-	        ZDKConfig.instance().userLocale = iOSlocale;
-        }
-        
-		ZDKConfig.instance().initializeWithAppIdZendeskUrlClientIdOnSuccessOnError(account.appId, account.url, account.clientId,
-			//SUCCESS
-			function(){
-				try{
-					if(account.anonymous){
-						loadAnonUser();
-					}
-
-					var controller = frameModule.topmost().ios.controller;
-
-					if(style === undefined){
-						controller.modalPresentationStyle = UIModalPresentationFormSheet;
-					} else{
-						controller.modalPresentationStyle = style;
-					}
-
-                    ZDKHelpCenter.presentHelpCenterWithNavController(controller);
-
-                } catch(args){
-                    console.log(args);
-                }
-            },
-            //ERROR
-            function zenDeskError(args){
-                 console.log(args);
-            });
-	} else{
-		notInitialized();
-	}
+// Public Methods
+exports.openHelpCenter = function () {
+    openZendesk().then(function(controller) {
+         ZDKHelpCenter.presentHelpCenterWithNavController(controller);
+    });
 }
 
-exports.openContactList = function(style){
-    if(account.initialized){
-        ZDKLogger.enable(account.loggingEnabled);
-        
-        if(account.locale !== "" && account.locale !== null){
-            var iOSlocale = NSString.alloc().initWithString(account.locale);
-	        ZDKConfig.instance().userLocale = iOSlocale;
-        }
-        
-        ZDKConfig.instance().initializeWithAppIdZendeskUrlClientIdOnSuccessOnError(account.appId, account.url, account.clientId,
-            //SUCCESS
-            function(){
-                try{
-					if(account.anonymous){
-						loadAnonUser();
-					}
-
-					var controller = frameModule.topmost().ios.controller;
-
-					if(style === undefined){
-						controller.modalPresentationStyle = UIModalPresentationFormSheet;
-					} else{
-						controller.modalPresentationStyle = style;
-					}
-
-                    ZDKRequests.presentRequestListWithNavController(controller);
-
-                } catch(args){
-                    console.log(args);
-                }
-            },
-            //ERROR
-            function zenDeskError(args){
-                 console.log(args);
-            });
-	} else{
-		notInitialized();
-	}
+exports.openContactList = function(){
+    openZendesk().then(function(controller) {
+         ZDKRequests.presentRequestListWithNavController(controller);
+    });
 }
 
 exports.createContactRequest = function(style){
-    if(account.initialized){
-        ZDKLogger.enable(account.loggingEnabled);
-        
-        if(account.locale !== "" && account.locale !== null){
-            var iOSlocale = NSString.alloc().initWithString(account.locale);
-	        ZDKConfig.instance().userLocale = iOSlocale;
-        }
-        
-        ZDKConfig.instance().initializeWithAppIdZendeskUrlClientIdOnSuccessOnError(account.appId, account.url, account.clientId,
-            //SUCCESS
-            function(){
-                try{
-					if(account.anonymous){
-						loadAnonUser();
-					}
-
-					var controller = frameModule.topmost().ios.controller;
-
-					if(style === undefined){
-						controller.modalPresentationStyle = UIModalPresentationFormSheet;
-					} else{
-						controller.modalPresentationStyle = style;
-					}
-
-                    ZDKRequests.showRequestCreationWithNavController(controller);
-
-                } catch(args){
-                    console.log(args);
-                }
-            },
-            //ERROR
-            function zenDeskError(args){
-                 console.log(args);
-            });
-	} else{
-		notInitialized();
-	}
+    openZendesk().then(function(controller) {
+         ZDKRequests.showRequestCreationWithNavController(controller);
+    });
 }
+
+//All code thats common
+function openZendesk(){
+    return new Promise(function(resolve, reject) {
+        if(account.initialized){
+            ZDKLogger.enable(account.loggingEnabled);
+
+            if(account.locale !== "" && account.locale !== null){
+                var iOSlocale = NSString.alloc().initWithString(account.locale);
+                ZDKConfig.instance().userLocale = iOSlocale;
+            }
+            
+            ZDKConfig.instance().initializeWithAppIdZendeskUrlClientIdOnSuccessOnError(account.appId, account.url, account.clientId,
+                //SUCCESS
+                function(){
+                    try{
+                        if(account.anonymous){
+                            loadAnonUser();
+                        }
+
+                        var controller = frameModule.topmost().ios.controller;
+
+                        controller.modalPresentationStyle = UIModalPresentationFormSheet;
+                        resolve(controller);
+
+                    } catch(args){
+                        console.log(args);
+                        reject(args);
+                    }
+                },
+                //ERROR
+                function zenDeskError(args){
+                    reject(args);;
+                });
+        } else{
+            notInitialized();
+            reject("Not Initialized");
+        }
+    });
+}
+
+
+
 
 
 
