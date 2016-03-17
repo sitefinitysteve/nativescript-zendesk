@@ -23,7 +23,22 @@ zendesk = zendeskModule.init({
 
 Open the Help Center
 ```js
+//Loads the main all category view
 zendesk.openHelpCenter();
+
+//Loads up a specific category
+zendesk.openHelpCenter({
+        type: "Category",
+        id: 202551987,//CategoryID: Must be a number, not a string
+        name: "My Sample Category" //(Optional, sets the titlebar), only used on iOS
+    });
+    
+//Loads up a specific section
+zendesk.openHelpCenter({
+        type: "Section",
+        id: 203791988, //SectionID: Must be a number, not a string
+        name: "Some Section" //(Optional, sets the titlebar), only used on iOS
+    });
 ```
 
 Open the Request Contact List, shows previous conversations and ability to create new

@@ -28,6 +28,28 @@ exports.onLoadHelpCenter = function(args){
     zendesk.openHelpCenter();
 }
 
+exports.onLoadHelpCenterCategory = function (args) {
+   if(viewModel.hasAuthSet())
+        zendesk.identifyUser(viewModel.id, viewModel.name, viewModel.email);
+        
+    zendesk.openHelpCenter({
+        type: "Category",
+        id: 202551987,
+        name: "My Sample Category"
+    });
+}
+
+exports.onLoadHelpCenterSection = function (args) {
+   if(viewModel.hasAuthSet())
+        zendesk.identifyUser(viewModel.id, viewModel.name, viewModel.email);
+        
+    zendesk.openHelpCenter({
+        type: "Section",
+        id: 203791988,
+        name: "Some Section"
+    });
+}
+
 exports.onCreateContact = function(args){
     if(viewModel.hasAuthSet())
         zendesk.identifyUser(viewModel.id, viewModel.name, viewModel.email);
@@ -38,7 +60,7 @@ exports.onCreateContact = function(args){
 exports.onLoadContact = function(args){
     if(viewModel.hasAuthSet())
         zendesk.identifyUser(viewModel.id, viewModel.name, viewModel.email);
-     debugger;   
+ 
     zendesk.openContactList();
 }
 

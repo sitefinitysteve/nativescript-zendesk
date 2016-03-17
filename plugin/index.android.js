@@ -37,7 +37,7 @@ exports.logging = function(loggingEnabled){
 	account.loggingEnabled = loggingEnabled;
 }
 
-exports.openHelpCenter = function (style){
+exports.openHelpCenter = function (options){
     if(account.initialized){
         var activity = frameModule.topmost().android.activity;
 
@@ -51,7 +51,30 @@ exports.openHelpCenter = function (style){
                 if(account.anonymous){
                     loadAnonUser();
                 }
-                new com.zendesk.sdk.support.SupportActivity.Builder().listCategories().show(activity);
+
+                var builder = new com.zendesk.sdk.support.SupportActivity.Builder();
+                builder.showContactUsButton(true);
+                
+                if(options === null){
+                    builder.listCategories();
+                }else{
+                    var name = (options.name) ? options.name : null;
+                    
+                    switch(options.type){
+                        case "Category":
+                            builder.listSections(options.id);
+                        break;
+                        case "Section":
+                            builder.listArticles(options.id);
+                        break;
+                        default:
+                            builder.listCategories();
+                        break;   
+                    }
+                }
+                
+                builder.show(activity);
+                
             },
             onError: function(error){
                 console.log(error);

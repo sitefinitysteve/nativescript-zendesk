@@ -7,6 +7,8 @@
         <StackLayout class="commands">
             <Label text="Commands" textWrap="true" class="title" />
             <Button text="HelpCenter" tap="onLoadHelpCenter"/>
+            <Button text="HelpCenter - Open Category" tap="onLoadHelpCenterCategory"/>
+            <Button text="HelpCenter - Open Section" tap="onLoadHelpCenterSection"/>
             <Button text="New Contact" tap="onCreateContact"/>
             <Button text="Contact List" tap="onLoadContact"/>
         </StackLayout>
