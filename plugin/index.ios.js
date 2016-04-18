@@ -10,7 +10,10 @@ exports.init = function(config){
     account.url = config.url;
     account.clientId = config.clientId;
     account.initialized = true;
-
+	account.ticketSubject = (config.ticketSubject) ? config.ticketSubject : "App ticket: iOS";
+    account.additionalInfo = (config.additionalInfo) ? config.additionalInfo : "";
+	account.tags = (config.tags) ? config.tags : [];
+	
     if(config.enableLogging){
         account.loggingEnabled = config.enableLogging;
     }
@@ -44,7 +47,7 @@ exports.openHelpCenter = function (options) {
          }else{
              var name = (options.name) ? options.name : null;
              var id = options.id.toString();
-             
+						
              switch(options.type){
                 case "Category":
                     ZDKHelpCenter.presentHelpCenterWithNavControllerFilterByCategoryIdCategoryNameLayoutGuide(controller, id, name, ZDKLayoutRespectAll);
@@ -82,6 +85,15 @@ function openZendesk(){
                 var iOSlocale = NSString.alloc().initWithString(account.locale);
                 ZDKConfig.instance().userLocale = iOSlocale;
             }
+			
+			ZDKRequests.configure(function(zdkAccount, customConfig){
+				customConfig.subject = account.ticketSubject;
+				customConfig.additionalRequestInfo = account.additionalInfo;	
+				
+				if(account.tags.length > 0){
+					customConfig.tags = account.tags;
+				}
+			});
             
             ZDKConfig.instance().initializeWithAppIdZendeskUrlClientIdOnSuccessOnError(account.appId, account.url, account.clientId,
                 //SUCCESS

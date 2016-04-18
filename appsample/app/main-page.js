@@ -16,7 +16,9 @@ exports.pageLoaded = function(args) {
         appId: appID, //required
         url: url, //required
         clientId: clientId, //required
-        enableLogging: true
+        enableLogging: true,
+        additionalInfo: "Here's some extra details to attach",
+        tags: ["nativescript", "awesome", "yolo"]
     });
 }
 

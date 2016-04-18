@@ -10,7 +10,9 @@ exports.init = function(config){
     account.url = config.url;
     account.clientId = config.clientId;
     account.initialized = true;
-    account.ticketSubject = "App ticket: Android"
+    account.ticketSubject = (config.ticketSubject) ? config.ticketSubject : "App ticket: Android";
+    account.additionalInfo = (config.additionalInfo) ? config.additionalInfo : "";
+    account.tags = (config.tags) ? config.tags : [];
 
     if(config.enableLogging){
         account.loggingEnabled = config.enableLogging;
@@ -183,9 +185,25 @@ function loadAnonUser(){
 
 function getConfig() {
   var SampleFeedbackConfiguration = com.zendesk.sdk.feedback.impl.BaseZendeskFeedbackConfiguration.extend({
-      getRequestSubject: function() {
-          return account.ticketSubject;
-      }
+        getAdditionalInfo: function() {
+            return account.additionalInfo;
+        },
+        
+        getTags: function() {
+            var arrayList = new java.util.ArrayList();
+            
+            
+            for(var i = 0; i < account.tags.length; i++){
+                var tag = new java.lang.String(account.tags[i])
+                arrayList.add(tag);
+            }
+
+            return arrayList;
+        },
+
+        getRequestSubject: function() {
+            return account.ticketSubject;
+        }
   });
 
   return new SampleFeedbackConfiguration();

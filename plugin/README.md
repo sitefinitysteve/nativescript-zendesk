@@ -16,8 +16,10 @@ zendesk = zendeskModule.init({
     appId: "", //required
     url: "", //required
     clientId: "", //required
-    enableLogging: true, //optional, bool
-    locale: "en-us" //optional, string
+	additionalInfo: "Some extra details", //(optional)
+	ticketSubject: "Special Ticket Subject", //(optional: Only works on android)
+    enableLogging: true, //(optional), bool
+    locale: "en-us" //(optional), string
 });
 ```
 

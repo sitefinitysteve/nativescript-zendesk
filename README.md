@@ -4,6 +4,11 @@
 * [Plugin](https://github.com/sitefinitysteve/nativescript-zendesk/tree/master/plugin)
 
 # Release Notes #
+## 0.2.9 ##
+* iOS: Can set ticket subject
+* Both: Can set additional info
+* Both: Can set tags
+
 ## 0.2.8 ##
 * Allow loading the helpcenter to a specific category or section
 
