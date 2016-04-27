@@ -4,7 +4,7 @@
 * [Plugin](https://github.com/sitefinitysteve/nativescript-zendesk/tree/master/plugin)
 
 # Release Notes #
-## 3.0
+## 0.3.1
 * iOS: Style the nav bar, thx for the PR!
 
 ## 0.2.9
