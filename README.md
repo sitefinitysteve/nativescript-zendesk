@@ -4,17 +4,20 @@
 * [Plugin](https://github.com/sitefinitysteve/nativescript-zendesk/tree/master/plugin)
 
 # Release Notes #
-## 0.2.9 ##
+## 3.0
+* iOS: Style the nav bar, thx for the PR!
+
+## 0.2.9
 * iOS: Can set ticket subject
 * Both: Can set additional info
 * Both: Can set tags
 
-## 0.2.8 ##
+## 0.2.8
 * Allow loading the helpcenter to a specific category or section
 
-## 0.2.4 ##
+## 0.2.4
 * **BREAKING: ** openContact method removed, replaced with openContactList and createContactRequest
 
-## 0.2.3 ##
+## 0.2.3
 * **BREAKING: ** Changed init to be an object, more readable, added locale to it
 * Updated demo to {N} 1.7

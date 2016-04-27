@@ -112,6 +112,11 @@ var myTheme = {
 		fileSizeLabelColor: "#E0E0E0",
 		titleLabelFont: UIFont.fontWithNameSize("Lato", 16),
 		fileSizeLabelFont: UIFont.fontWithNameSize("Lato", 16)
+	},
+	ZDKNavigationBar: {
+			tintColor: "#E0E0E0",
+			barTintColor: "#E0E0E0",
+			titleColor: "#E0E0E0",
 	}
 };
 	
