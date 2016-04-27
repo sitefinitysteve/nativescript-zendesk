@@ -257,6 +257,23 @@ exports.setTheme = function(args){
 				ZDKSupportAttachmentCell.appearance().fileSizeLabelFont = args.ZDKSupportAttachmentCell.fileSizeLabelFont;
 			}
 		}
+
+		//Navigation Bar
+		if(args.ZDKNavigationBar){
+			//Navigation items
+			if(args.ZDKNavigationBar.tintColor){
+				UINavigationBar.appearance().tintColor = getColor(args.ZDKNavigationBar.tintColor);
+			}
+			//Navigation Bar background
+			if(args.ZDKNavigationBar.barTintColor){
+				UINavigationBar.appearance().barTintColor = getColor(args.ZDKNavigationBar.barTintColor);
+			}
+			//Navigation Bar title color
+			if(args.ZDKNavigationBar.titleColor){
+				var attribute = new NSDictionary([getColor(args.ZDKNavigationBar.titleColor)], [NSForegroundColorAttributeName]);
+				UINavigationBar.appearance().titleTextAttribute = attribute;
+			}
+		}
 	}
 }
 
