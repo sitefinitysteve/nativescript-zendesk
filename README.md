@@ -4,6 +4,9 @@
 * [Plugin](https://github.com/sitefinitysteve/nativescript-zendesk/tree/master/plugin)
 
 # Release Notes #
+## 0.3.2
+* iOS: Zendesk Changed the method for setting an indentity
+
 ## 0.3.1
 * iOS: Style the nav bar, thx for the PR!
 

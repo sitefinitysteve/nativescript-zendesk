@@ -289,7 +289,7 @@ function loadAnonUser(){
 	  	anonymousIdentity.email = user.email;
 	}
 
-	ZDKConfig.instance().setUserIdentity(anonymousIdentity);
+	ZDKConfig.instance().userIdentity = anonymousIdentity;
 }
 
 function getColor(color){
