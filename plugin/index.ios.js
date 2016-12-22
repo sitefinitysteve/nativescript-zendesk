@@ -42,7 +42,7 @@ exports.logging = function(loggingEnabled){
 // Public Methods
 exports.openHelpCenter = function (options) {
     openZendesk().then(function(controller) {
-         if(options === null){
+         if(options === null || options === undefined){
             ZDKHelpCenter.presentHelpCenterWithNavController(controller);
          }else{
              var name = (options.name) ? options.name : null;
